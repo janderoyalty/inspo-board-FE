@@ -38,6 +38,7 @@ const UpdateBoardForm = ({ updateBoardCallback }) => {
                         name='title'
                         id='title'
                         type='text'
+                        value={formData.title}
                     />
                     <label htmlFor='owner'>Owner</label>
                     <input
@@ -45,6 +46,7 @@ const UpdateBoardForm = ({ updateBoardCallback }) => {
                         name='owner'
                         id='owner'
                         type='owner'
+                        value={formData.owner}
                     />
                     <button type='submit'>Update Board</button>
                 </form>

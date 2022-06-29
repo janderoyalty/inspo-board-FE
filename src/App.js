@@ -1,13 +1,14 @@
 import './App.css';
 import React, { useState, useEffect } from 'react';
-import UpdateBoardForm from './Components/UpdateBoardForm';
 import axios from 'axios';
+import UpdateBoardForm from './Components/UpdateBoardForm';
+// import Board from './Board';
 
-const URL = 'https://ma5en-inspo-board-be.herokuapp.com/';
+export const URL = 'https://ma5en-inspo-board-be.herokuapp.com';
 
 function App() {
     const [boardData, setBoardData] = useState([]);
-    const [selected, setSelected] = useState(boardData[0]);
+    const [selected, setSelected] = useState({});
 
     const getBoards = () => {
         axios
@@ -21,6 +22,7 @@ function App() {
                     };
                 });
                 setBoardData(newData);
+                // setSelected(boardData[0]);
             })
             .catch((err) => {
                 alert(err);
@@ -30,6 +32,9 @@ function App() {
     useEffect(() => getBoards(), []);
 
     const updateBoard = (newBoardInfo) => {
+        axios
+            .put(`${URL}/boards/${selected.id}`, newBoardInfo)
+            .catch((err) => alert(err));
         const newBoardData = boardData.map((board) => {
             if (board.id === selected.id) {
                 return newBoardInfo;
@@ -43,6 +48,7 @@ function App() {
     return (
         <div className='App'>
             <UpdateBoardForm updateBoardCallback={updateBoard} />
+            {/* <Board boardId={selected.id} /> */}
         </div>
     );
 }
