@@ -1,25 +1,25 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-// need to import board 
+import React from "react";
+import PropTypes from "prop-types";
+// need to import board
 
-// NEED TO CREATE CSS FILE 
+// NEED TO CREATE CSS FILE
 
-
-const BordList = ({ boards, selectBoard }) => {
-    const displayBoard = boards.map((board => {
-        return <ul>{board.title}</ul>
+const BoardList = ({ boards, selectBoard }) => {
+  const displayBoard = (boards) => {
+    return boards.map((board) => {
+      return <li onClick={() => selectBoard(board.id)}>{board.title}</li>;
     });
+  };
 
-    return (
-        <section>
-            <li>{{displayBoard}}</li>
-        </section>
-    )
-}
+  return (
+    <section>
+      <ul>{displayBoard(boards)}</ul>
+    </section>
+  );
+};
 
-
-BoardList.propTypes = { 
-    boards: PropTypes.array.isRequired,
-}
+BoardList.propTypes = {
+  boards: PropTypes.array.isRequired,
+};
 
 export default BoardList;
