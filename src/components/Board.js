@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import Card from './Components/Card';
-import { URL } from './App';
+import Card from './Card';
+import { URL } from '../App';
 
 const Board = ({ boardId }) => {
     const [cardData, setCardData] = useState([]);
