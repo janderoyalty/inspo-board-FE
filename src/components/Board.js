@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import Card from './Card';
 import { URL } from '../App';
+import NewCardForm from './NewCardForm';
 
 const Board = ({ boardId }) => {
     const [cardData, setCardData] = useState([]);
@@ -25,6 +26,27 @@ const Board = ({ boardId }) => {
     };
 
     useEffect(() => getCards(), []);
+
+    const createCard = () => {};
+
+    const updateCard = async (id, message) => {
+        try {
+            await axios.patch(`${URL}/cards/${id}`, { message });
+            const newCardData = cardData.map((card) => {
+                if (card.id === id) {
+                    return {
+                        ...card,
+                        [message]: message,
+                    };
+                } else {
+                    return card;
+                }
+            });
+            setCardData(newCardData);
+        } catch (err) {
+            alert(err);
+        }
+    };
 
     const deleteCard = async (id) => {
         try {
@@ -56,19 +78,23 @@ const Board = ({ boardId }) => {
     };
 
     return (
-        <div>
-            {cardData.map((card, index) => {
-                return (
-                    <Card
-                        key={index}
-                        id={card.id}
-                        message={card.message}
-                        likeCount={card.likeCount}
-                        updateLikes={updateLikes}
-                        deleteCard={deleteCard}
-                    />
-                );
-            })}
+        <div className='board'>
+            <div className='cards'>
+                {cardData.map((card, index) => {
+                    return (
+                        <Card
+                            key={index}
+                            id={card.id}
+                            message={card.message}
+                            likeCount={card.likeCount}
+                            updateLikes={updateLikes}
+                            deleteCard={deleteCard}
+                            updateCard={updateCard}
+                        />
+                    );
+                })}
+            </div>
+            <NewCardForm createCardFunction={createCard} />
         </div>
     );
 };
