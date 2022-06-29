@@ -14,6 +14,7 @@ const UpdateCardForm = ({ updateCardCallback, cardId }) => {
         e.preventDefault();
         updateCardCallback(cardId, message);
         setMessage('');
+        setHide(true);
     };
 
     const shown = hide ? 'hidden' : 'shown';
@@ -21,7 +22,7 @@ const UpdateCardForm = ({ updateCardCallback, cardId }) => {
     return (
         <div>
             <button onClick={() => setHide(!hide)}>
-                {hide ? 'Update Card' : 'Hide Form'}
+                {hide ? 'Update Card' : 'Hide'}
             </button>
             <div className={shown}>
                 <form onSubmit={updateCard}>
@@ -33,7 +34,7 @@ const UpdateCardForm = ({ updateCardCallback, cardId }) => {
                         type='text'
                         value={message}
                     />
-                    <button type='submit'>Update Card</button>
+                    <button type='submit'>Update</button>
                 </form>
             </div>
         </div>

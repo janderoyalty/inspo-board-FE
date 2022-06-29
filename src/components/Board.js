@@ -25,7 +25,7 @@ const Board = ({ boardId }) => {
             });
     };
 
-    useEffect(() => getCards(), []);
+    useEffect(() => getCards(), [cardData]);
 
     const createCard = () => {};
 
