@@ -55,7 +55,7 @@ function App() {
       {/* <Board board={board} addedBoard={addBoard} /> */}
       <button
         onClick={() => {
-          addBoard({ title: "Work", owner: "Jande" });
+          addBoard({ title: "Hello", owner: "Ivana" });
         }}
       >
         Add Board
@@ -69,7 +69,7 @@ function App() {
       </button>
       <button
         onClick={() => {
-          deleteBoard(7);
+          deleteBoard(8);
         }}
       >
         Delete Board
