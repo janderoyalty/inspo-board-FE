@@ -1,8 +1,16 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import './Card.css';
+import UpdateCardForm from './UpdateCardForm';
 
-const Card = ({ id, message, likeCount, updateLikes, deleteCard }) => {
+const Card = ({
+    id,
+    message,
+    likeCount,
+    updateLikes,
+    deleteCard,
+    updateCard,
+}) => {
     return (
         <div className='Card'>
             <p className='Card-message'>{message}</p>
@@ -11,6 +19,7 @@ const Card = ({ id, message, likeCount, updateLikes, deleteCard }) => {
                 <button onClick={() => updateLikes(id)}>💕 +1</button>
                 <button onClick={() => deleteCard(id)}>🗑</button>
             </div>
+            <UpdateCardForm updateCardCallback={updateCard} cardId={id} />
         </div>
     );
 };
