@@ -94,7 +94,7 @@ const Board = ({ boardId }) => {
                     );
                 })}
             </div>
-            <NewCardForm createCardFunction={createCard} />
+            {/* <NewCardForm createCardFunction={createCard} /> */}
         </div>
     );
 };

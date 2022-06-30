@@ -1,28 +1,42 @@
 import React, { useState } from "react";
-import PropTypes from "prop-types";
 
-const NewCardForm = ({ createCardFunction }) => {
-  // State to toogle form
-  const [isVisible, setVisible] = useState(false);
+const NewCardForm = ({ onAddCardCallback }) => {
+  const [hide, setHide] = useState(true);
 
-  // State to submit new form
-  const [newCardMessage, setCardMessage] = useState({ cardMessage: "" });
+  const [cardData, setCardData] = useState({ cardMessage: "" });
 
-  // Event Handler to toggle form:
-  const toggleCardForm = (event) => {
-    event.preventDefault();
-    // finish event handler
+  const handleCardMessageChange = (event) => {
+    setCardData({...cardData, cardMessage: event.target.value})
   };
 
+  const submitCardData = (event) => {
+    event.preventDefault();
+
+    onAddCardCallback({
+      message: cardData.cardMessage,
+    });
+    setCardData({cardMessage: ''})
+  };
+
+  const shown = hide ? "hidden" : "shown"
+
   return (
-    <section className="new-card-form">
-      <h1>Add A New Card</h1>
-      <form>
-        <label className="new-card-label">New Card Message:</label>
-        <input className="new-card-input" type="text"></input>
-        <button className="new-card-submit-button">submit</button>
-      </form>
-    </section>
+    <div>
+      <button onClick={() => setHide(!hide)}>
+        {(hide ? "Show" : "Hide") + "New Card Form"}
+      </button>
+      <section className={shown}>
+        <h1>Add A New Card</h1>
+        <form onSubmit={submitCardData}>
+          <label className="new-card-label"> Message:</label>
+          <input className="new-card-input" 
+            type="text" 
+            value={cardData.cardMessage} 
+            onChange={handleCardMessageChange}></input>
+          <button className="new-card-submit-button" type="submit">submit</button>
+        </form>
+      </section>
+    </div>
   );
 };
 
