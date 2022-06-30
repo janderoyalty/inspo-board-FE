@@ -1,0 +1,16 @@
+#sortMenu {
+  border: 1px solid black;
+  margin: 1rem;
+  padding: .5rem;
+  text-align: left;
+  width: fit-content;
+}
+
+.sortMenuLabel {
+  font-weight: bold;
+  text-decoration: underline;
+}
+
+.menuItem {
+  cursor: pointer;
+}

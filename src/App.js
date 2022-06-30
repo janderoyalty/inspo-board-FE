@@ -5,6 +5,7 @@ import UpdateBoardForm from "./Components/UpdateBoardForm";
 import NewBoardForm from "./Components/NewBoardForm";
 import Board from "./Components/Board";
 import BoardList from "./Components/BoardList";
+import NewCardForm from "./Components/NewCardForm"
 
 export const URL = "https://ma5en-inspo-board-be.herokuapp.com";
 
@@ -12,6 +13,7 @@ const App = () => {
   // BRAINS
   const [boardData, setBoardData] = useState([]);
   const [selected, setSelected] = useState({});
+  const [cardList, setCardList] = useState([]);
 
   const selectBoard = (boardId) => {
     for (const board of boardData) {
@@ -98,6 +100,20 @@ const App = () => {
       });
   };
 
+  const addNewCard = (newCard) => {
+    axios
+    .post(`${URL}/boards/${selected.id}`, newCard)
+    .then((response) => {
+      console.log("a new card has been posted");
+      const cards = [...cardList];
+      cards.push(response.data);
+      setCardList(cards)
+    })
+    .catch((error) => {
+      console.log(error)
+    });
+  };
+
   // BEAUTY
   return (
     <div className="App">
@@ -109,6 +125,10 @@ const App = () => {
         />
       <UpdateBoardForm updateBoardCallback={updateBoard} />
       {selected.id && <Board boardId={selected.id} />}
+
+      <NewBoardForm onAddBoardCallback={addBoard} />
+      {/* <Board boardId={selected.id} /> */}
+      <NewCardForm onAddCardCallback={addNewCard} cardList={cardList} />
       <button
         onClick={() => {
           deleteBoard(8);

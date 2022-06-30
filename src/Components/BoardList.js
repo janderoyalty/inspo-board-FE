@@ -1,8 +1,6 @@
-import React from "react";
-import PropTypes from "prop-types";
-// need to import board
+import React from 'react';
+import PropTypes from 'prop-types';
 
-// NEED TO CREATE CSS FILE
 
 const BoardList = ({ boards, selectBoard, onDeleteCallback }) => {
   const displayBoard = (boards) => {

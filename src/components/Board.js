@@ -1,11 +1,15 @@
-import React, { useState, useEffect } from "react";
-import axios from "axios";
-import Card from "./Card";
-import { URL } from "../App";
-import NewCardForm from "./NewCardForm";
+import React, { useState, useEffect } from 'react';
+import axios from 'axios';
+import Card from './Card';
+import { URL } from '../App';
+import NewCardForm from './NewCardForm';
+import SortMenu from './SortMenu';
+import './Board.css';
 
 const Board = ({ boardId }) => {
-  const [cardData, setCardData] = useState([]);
+    const [cardData, setCardData] = useState([]);
+    const [sortBy, setSortBy] = useState('id');
+    const [orderBy, setOrderBy] = useState('desc');
 
   const getCards = () => {
     axios
@@ -27,7 +31,12 @@ const Board = ({ boardId }) => {
 
   useEffect(() => getCards(), [cardData]);
 
-  const createCard = () => {};
+    const sortedCards = cardData.sort((a, b) => {
+        let order = orderBy === 'asc' ? 1 : -1;
+        return a[sortBy] < b[sortBy] ? -1 * order : 1 * order;
+    });
+
+    const createCard = () => {};
 
   const updateCard = async (id, message) => {
     try {
@@ -77,27 +86,38 @@ const Board = ({ boardId }) => {
     }
   };
 
-  return (
-    <div className="board">
-      <NewCardForm createCardFunction={createCard} />
-      <div className="cards">
-        <h1>{Board.title}</h1>
-        {cardData.map((card, index) => {
-          return (
-            <Card
-              key={index}
-              id={card.id}
-              message={card.message}
-              likeCount={card.likeCount}
-              updateLikes={updateLikes}
-              deleteCard={deleteCard}
-              updateCard={updateCard}
-            />
-          );
-        })}
-      </div>
-    </div>
-  );
+    return (
+        <div className='board'>
+            <div className='sortMenuContainer'>
+                <SortMenu
+                    sortBy={sortBy}
+                    onSortByChange={(sortOption) => {
+                        setSortBy(sortOption);
+                    }}
+                    orderBy={orderBy}
+                    onOrderByChange={(orderOption) => {
+                        setOrderBy(orderOption);
+                    }}
+                />
+            </div>
+            <div className='cards'>
+                {sortedCards.map((card, index) => {
+                    return (
+                        <Card
+                            key={index}
+                            id={card.id}
+                            message={card.message}
+                            likeCount={card.likeCount}
+                            updateLikes={updateLikes}
+                            deleteCard={deleteCard}
+                            updateCard={updateCard}
+                        />
+                    );
+                })}
+            </div>
+            {/* <NewCardForm createCardFunction={createCard} /> */}
+        </div>
+    );
 };
 
 export default Board;
