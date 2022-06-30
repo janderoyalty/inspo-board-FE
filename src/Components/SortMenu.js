@@ -1,5 +1,6 @@
 import { BiCheck } from 'react-icons/bi';
 import './SortMenu.css';
+import PropTypes from 'prop-types';
 
 const SortMenu = ({ sortBy, onSortByChange, orderBy, onOrderByChange }) => {
     return (
@@ -29,6 +30,13 @@ const SortMenu = ({ sortBy, onSortByChange, orderBy, onOrderByChange }) => {
             </button>
         </section>
     );
+};
+
+SortMenu.propTypes = {
+    sortBy: PropTypes.string.isRequired,
+    onSortByChange: PropTypes.func.isRequired,
+    orderBy: PropTypes.string.isRequired,
+    onOrderByChange: PropTypes.func.isRequired,
 };
 
 export default SortMenu;

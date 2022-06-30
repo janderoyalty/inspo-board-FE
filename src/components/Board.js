@@ -5,6 +5,7 @@ import { URL } from '../App';
 import NewCardForm from './NewCardForm';
 import SortMenu from './SortMenu';
 import './Board.css';
+import PropTypes from 'prop-types';
 
 const Board = ({ board }) => {
     const [cardData, setCardData] = useState([]);
@@ -144,6 +145,14 @@ const Board = ({ board }) => {
             <NewCardForm boardId={board.id} onAddCardCallback={addNewCard} />
         </div>
     );
+};
+
+Board.propTypes = {
+    board: PropTypes.shape({
+        id: PropTypes.number.isRequired,
+        owner: PropTypes.string.isRequired,
+        title: PropTypes.string.isRequired,
+    }),
 };
 
 export default Board;
