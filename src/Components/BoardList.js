@@ -1,8 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-
-const BoardList = ({ boards, selectBoard }) => {
+const BoardList = ({ boards, selectBoard, onDeleteCallback }) => {
     const displayBoard = (boards) => {
         return boards.map((board, index) => {
             return (

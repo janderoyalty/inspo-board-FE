@@ -6,14 +6,14 @@ import NewCardForm from './NewCardForm';
 import SortMenu from './SortMenu';
 import './Board.css';
 
-const Board = ({ boardId }) => {
+const Board = ({ board }) => {
     const [cardData, setCardData] = useState([]);
     const [sortBy, setSortBy] = useState('id');
     const [orderBy, setOrderBy] = useState('desc');
 
     const getCards = () => {
         axios
-            .get(`${URL}/boards/${boardId}/cards`)
+            .get(`${URL}/boards/${board.id}/cards`)
             .then((response) => {
                 const newData = response.data.map((card) => {
                     return {
@@ -36,7 +36,18 @@ const Board = ({ boardId }) => {
         return a[sortBy] < b[sortBy] ? -1 * order : 1 * order;
     });
 
-    const createCard = () => {};
+    const addNewCard = (newCard) => {
+        axios
+            .post(`${URL}/boards/${board.id}/cards`, newCard)
+            .then((response) => {
+                console.log('a new card has been posted');
+                const cards = [...cardData, response.data];
+                setCardData(cards);
+            })
+            .catch((error) => {
+                console.log(error);
+            });
+    };
 
     const updateCard = async (id, message) => {
         try {
@@ -88,6 +99,7 @@ const Board = ({ boardId }) => {
 
     return (
         <div className='board'>
+            <h1>{board.title}</h1>
             <div className='sortMenuContainer'>
                 <SortMenu
                     sortBy={sortBy}
@@ -115,7 +127,7 @@ const Board = ({ boardId }) => {
                     );
                 })}
             </div>
-            {/* <NewCardForm createCardFunction={createCard} /> */}
+            <NewCardForm boardId={board.id} onAddCardCallback={addNewCard} />
         </div>
     );
 };
