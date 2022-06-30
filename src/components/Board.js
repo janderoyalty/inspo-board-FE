@@ -3,9 +3,12 @@ import axios from 'axios';
 import Card from './Card';
 import { URL } from '../App';
 import NewCardForm from './NewCardForm';
+import SortMenu from './SortMenu';
 
 const Board = ({ boardId }) => {
     const [cardData, setCardData] = useState([]);
+    const [sortBy, setSortBy] = useState('id');
+    const [orderBy, setOrderBy] = useState('desc');
 
     const getCards = () => {
         axios
@@ -26,6 +29,11 @@ const Board = ({ boardId }) => {
     };
 
     useEffect(() => getCards(), [cardData]);
+
+    const sortedCards = cardData.sort((a, b) => {
+        let order = orderBy === 'asc' ? 1 : -1;
+        return a[sortBy] < b[sortBy] ? -1 * order : 1 * order;
+    });
 
     const createCard = () => {};
 
@@ -79,8 +87,20 @@ const Board = ({ boardId }) => {
 
     return (
         <div className='board'>
+            <div className='sortMenuContainer'>
+                <SortMenu
+                    sortBy={sortBy}
+                    onSortByChange={(sortOption) => {
+                        setSortBy(sortOption);
+                    }}
+                    orderBy={orderBy}
+                    onOrderByChange={(orderOption) => {
+                        setOrderBy(orderOption);
+                    }}
+                />
+            </div>
             <div className='cards'>
-                {cardData.map((card, index) => {
+                {sortedCards.map((card, index) => {
                     return (
                         <Card
                             key={index}
