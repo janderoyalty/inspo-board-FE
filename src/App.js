@@ -117,9 +117,15 @@ const App = () => {
   // BEAUTY
   return (
     <div className="App">
-      <BoardList selectBoard={selectBoard} boards={boardData} />
+      <NewBoardForm onAddBoardCallback={addBoard} />
+      <BoardList 
+        selectBoard={selectBoard} 
+        boards={boardData}
+        onDeleteCallback={deleteBoard}
+        />
       <UpdateBoardForm updateBoardCallback={updateBoard} />
       {selected.id && <Board boardId={selected.id} />}
+
       <NewBoardForm onAddBoardCallback={addBoard} />
       {/* <Board boardId={selected.id} /> */}
       <NewCardForm onAddCardCallback={addNewCard} cardList={cardList} />
