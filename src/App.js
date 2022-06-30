@@ -1,9 +1,11 @@
-import './App.css';
-import React, { useState, useEffect } from 'react';
-import axios from 'axios';
-import UpdateBoardForm from './Components/UpdateBoardForm';
-import Board from './Components/Board';
-import BoardList from './Components/BoardList';
+import "./App.css";
+import React, { useState, useEffect } from "react";
+import axios from "axios";
+import UpdateBoardForm from "./Components/UpdateBoardForm";
+import NewBoardForm from "./Components/NewBoardForm";
+import Board from "./Components/Board";
+import BoardList from "./Components/BoardList";
+
 
 export const URL = 'https://ma5en-inspo-board-be.herokuapp.com';
 
@@ -97,32 +99,38 @@ const App = () => {
             });
     };
 
-    // BEAUTY
-    return (
-        <div className='App'>
-            <BoardList selectBoard={selectBoard} boards={boardData} />
-            <UpdateBoardForm updateBoardCallback={updateBoard} />
-            {selected.id && <Board boardId={selected.id} />}
-            <button
-                onClick={() => {
-                    addBoard({ title: 'Hello', owner: 'Ivana' });
-                }}>
-                Add Board
-            </button>
-            <button
-                onClick={() => {
-                    getBoard(2);
-                }}>
-                Get Board
-            </button>
-            <button
-                onClick={() => {
-                    deleteBoard(8);
-                }}>
-                Delete Board
-            </button>
-        </div>
-    );
+  // BEAUTY
+  return (
+    <div className="App">
+      <BoardList selectBoard={selectBoard} boards={boardData} />
+      <UpdateBoardForm updateBoardCallback={updateBoard} />
+      {selected.id && <Board boardId={selected.id} />}
+      <NewBoardForm onAddBoardCallback={addBoard} />
+      <Board boardId={selected.id} />
+      <button
+        onClick={() => {
+          addBoard({ title: "Hello", owner: "Ivana" });
+        }}
+      >
+        Add Board
+      </button>
+      <button
+        onClick={() => {
+          getBoard(2);
+        }}
+      >
+        Get Board
+      </button>
+      <button
+        onClick={() => {
+          deleteBoard(8);
+        }}
+      >
+        Delete Board
+      </button>
+    </div>
+  );
+
 };
 
 export default App;
