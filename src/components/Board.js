@@ -4,6 +4,7 @@ import Card from './Card';
 import { URL } from '../App';
 import NewCardForm from './NewCardForm';
 import SortMenu from './SortMenu';
+import './Board.css';
 
 const Board = ({ boardId }) => {
     const [cardData, setCardData] = useState([]);
