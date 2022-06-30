@@ -23,7 +23,7 @@ const NewCardForm = ({ onAddCardCallback }) => {
     return (
         <div>
             <button onClick={() => setHide(!hide)}>
-                {(hide ? 'Show' : 'Hide') + 'New Card Form'}
+                {(hide ? 'Show' : 'Hide') + ' New Card Form'}
             </button>
             <section className={shown}>
                 <h1>Add A New Card</h1>
