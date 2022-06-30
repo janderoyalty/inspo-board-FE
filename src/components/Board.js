@@ -36,36 +36,50 @@ const Board = ({ board }) => {
         return a[sortBy] < b[sortBy] ? -1 * order : 1 * order;
     });
 
-    const addNewCard = (newCard) => {
-        axios
-            .post(`${URL}/boards/${board.id}/cards`, newCard)
-            .then((response) => {
-                console.log('a new card has been posted');
-                const cards = [...cardData, response.data];
-                setCardData(cards);
-            })
-            .catch((error) => {
-                console.log(error);
-            });
+    const validateCardData = (newCardInfo) => {
+        if (!newCardInfo['message']) {
+            return alert('New card must have a message!');
+        } else if (newCardInfo['message'].length > 40) {
+            return alert(
+                `Messages cannot be more than 40 characters, yours is ${newCardInfo['message'].length} long!`
+            );
+        } else return true;
     };
 
-    const updateCard = async (id, message) => {
-        try {
-            await axios.patch(`${URL}/cards/${id}`, { message });
-            const newCardData = cardData.map((card) => {
-                if (card.id === id) {
-                    return {
-                        ...card,
-                        [message]: message,
-                    };
-                } else {
-                    return card;
-                }
-            });
-            setCardData(newCardData);
-        } catch (err) {
-            alert(err);
-        }
+    const addNewCard = (newCard) => {
+        validateCardData(newCard) &&
+            axios
+                .post(`${URL}/boards/${board.id}/cards`, newCard)
+                .then((response) => {
+                    console.log('a new card has been posted');
+                    const cards = [...cardData, response.data];
+                    setCardData(cards);
+                })
+                .catch((error) => {
+                    console.log(error);
+                });
+    };
+
+    const updateCard = (id, message) => {
+        validateCardData({ message }) &&
+            axios
+                .patch(`${URL}/cards/${id}`, { message })
+                .then(() => {
+                    const newCardData = cardData.map((card) => {
+                        if (card.id === id) {
+                            return {
+                                ...card,
+                                [message]: message,
+                            };
+                        } else {
+                            return card;
+                        }
+                    });
+                    setCardData(newCardData);
+                })
+                .catch((err) => {
+                    alert(err);
+                });
     };
 
     const deleteCard = async (id) => {

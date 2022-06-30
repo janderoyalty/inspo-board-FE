@@ -41,10 +41,20 @@ const App = () => {
 
     useEffect(() => getBoards(), [boardData]);
 
+    const validateBoardData = (newBoardInfo) => {
+        if (!newBoardInfo['title']) {
+            return alert('New board must have a title!');
+        }
+        if (!newBoardInfo['owner']) {
+            return alert('New board must have an owner!');
+        } else return true;
+    };
+
     const updateBoard = (newBoardInfo) => {
-        axios
-            .put(`${URL}/boards/${selected.id}`, newBoardInfo)
-            .catch((err) => alert(err));
+        validateBoardData(newBoardInfo) &&
+            axios
+                .put(`${URL}/boards/${selected.id}`, newBoardInfo)
+                .catch((err) => alert(err));
         const newBoardData = boardData.map((board) => {
             if (board.id === selected.id) {
                 return newBoardInfo;
@@ -56,15 +66,16 @@ const App = () => {
     };
 
     const addBoard = ({ title, owner }) => {
-        axios
-            .post(`${URL}/boards`, {
-                title: title,
-                owner: owner,
-            })
-            .then((response) => {})
-            .catch((error) => {
-                console.log(error);
-            });
+        validateBoardData({ title, owner }) &&
+            axios
+                .post(`${URL}/boards`, {
+                    title: title,
+                    owner: owner,
+                })
+                .then((response) => {})
+                .catch((error) => {
+                    console.log(error);
+                });
     };
 
     const deleteBoard = (boardId) => {
