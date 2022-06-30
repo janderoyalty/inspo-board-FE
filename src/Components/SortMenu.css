@@ -8,9 +8,19 @@
 
 .sortMenuLabel {
   font-weight: bold;
+  margin: 0;
   text-decoration: underline;
 }
 
 .menuItem {
+  background-color: transparent;
+  border: none;
   cursor: pointer;
+  display: block;
+  font: 1rem 'Segoe UI', 'Roboto', sans-serif;
+  margin-top: .25rem;
+}
+
+#checkMark {
+  vertical-align: text-bottom;
 }
