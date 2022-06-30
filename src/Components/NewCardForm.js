@@ -1,29 +1,29 @@
-import React, { useState } from 'react';
-import PropTypes from 'prop-types';
+import React, { useState } from "react";
+import PropTypes from "prop-types";
 
 const NewCardForm = ({ createCardFunction }) => {
-    // State to toogle form
-    const [isVisible, setVisible] = useState(false);
+  // State to toogle form
+  const [isVisible, setVisible] = useState(false);
 
-    // State to submit new form
-    const [newCardMessage, setCardMessage] = useState({ cardMessage: '' });
+  // State to submit new form
+  const [newCardMessage, setCardMessage] = useState({ cardMessage: "" });
 
-    // Event Handler to toggle form:
-    const toggleCardForm = (event) => {
-        event.preventDefault();
-        // finish event handler
-    };
+  // Event Handler to toggle form:
+  const toggleCardForm = (event) => {
+    event.preventDefault();
+    // finish event handler
+  };
 
-    return (
-        <section className='new-card-form'>
-            <h1>Add A New Card</h1>
-            <form>
-                <label className='new-card-label'>New Card Message:</label>
-                <input className='new-card-input' type='text'></input>w
-                <button className='new-card-submit-button'>submit</button>
-            </form>
-        </section>
-    );
+  return (
+    <section className="new-card-form">
+      <h1>Add A New Card</h1>
+      <form>
+        <label className="new-card-label">New Card Message:</label>
+        <input className="new-card-input" type="text"></input>
+        <button className="new-card-submit-button">submit</button>
+      </form>
+    </section>
+  );
 };
 
 export default NewCardForm;
