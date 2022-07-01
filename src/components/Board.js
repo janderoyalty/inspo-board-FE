@@ -6,11 +6,15 @@ import NewCardForm from "./NewCardForm";
 import SortMenu from "./SortMenu";
 import "./Board.css";
 import PropTypes from "prop-types";
+import { BiSort } from "react-icons/bi";
 
 const Board = ({ board, onDeleteCallback }) => {
   const [cardData, setCardData] = useState([]);
   const [sortBy, setSortBy] = useState("id");
   const [orderBy, setOrderBy] = useState("desc");
+  const [hide, setHide] = useState(true);
+
+  const shown = hide ? "hidden" : "shown";
 
   const getCards = () => {
     axios
@@ -125,19 +129,29 @@ const Board = ({ board, onDeleteCallback }) => {
           Delete Board
         </button>
       </div>
-      <div className="board--content">
-        <div className="sort-menu--container">
-          <SortMenu
-            sortBy={sortBy}
-            onSortByChange={(sortOption) => {
-              setSortBy(sortOption);
-            }}
-            orderBy={orderBy}
-            onOrderByChange={(orderOption) => {
-              setOrderBy(orderOption);
-            }}
-          />
+      <div className="board--nav">
+        <div>
+          <BiSort onClick={() => setHide(!hide)}>
+            {hide ? "Show" : "Hide"}
+          </BiSort>
+          <section className={shown}>
+            <div className="sort-menu--container">
+              <SortMenu
+                sortBy={sortBy}
+                onSortByChange={(sortOption) => {
+                  setSortBy(sortOption);
+                }}
+                orderBy={orderBy}
+                onOrderByChange={(orderOption) => {
+                  setOrderBy(orderOption);
+                }}
+              />
+            </div>
+          </section>
         </div>
+        <NewCardForm boardId={board.id} onAddCardCallback={addNewCard} />
+      </div>
+      <div className="board--cards">
         <div className="cards">
           {sortedCards.map((card, index) => {
             return (
@@ -153,7 +167,7 @@ const Board = ({ board, onDeleteCallback }) => {
             );
           })}
         </div>
-        <NewCardForm boardId={board.id} onAddCardCallback={addNewCard} />
+        {/* <NewCardForm boardId={board.id} onAddCardCallback={addNewCard} /> */}
       </div>
     </div>
   );

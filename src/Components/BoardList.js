@@ -1,11 +1,14 @@
 import React, { useState } from "react";
 import PropTypes from "prop-types";
 import SortBoardMenu from "./SortBoardMenu";
+import { BiSort } from "react-icons/bi";
 
 const BoardList = ({ boards, selectBoard }) => {
   const [sortBy, setSortBy] = useState("id");
   const [orderBy, setOrderBy] = useState("desc");
+  const [hide, setHide] = useState(true);
 
+  const shown = hide ? "hidden" : "shown";
   const sortedBoards = boards.sort((a, b) => {
     let order = orderBy === "asc" ? 1 : -1;
     return a[sortBy] < b[sortBy] ? -1 * order : 1 * order;
@@ -23,17 +26,22 @@ const BoardList = ({ boards, selectBoard }) => {
 
   return (
     <section>
-      <div className="sort-menu--container">
-        <SortBoardMenu
-          sortBy={sortBy}
-          onSortByChange={(sortOption) => {
-            setSortBy(sortOption);
-          }}
-          orderBy={orderBy}
-          onOrderByChange={(orderOption) => {
-            setOrderBy(orderOption);
-          }}
-        />
+      <div>
+        <BiSort onClick={() => setHide(!hide)}>{hide ? "Show" : "Hide"}</BiSort>
+        <section className={shown}>
+          <div className="sort-menu--container">
+            <SortBoardMenu
+              sortBy={sortBy}
+              onSortByChange={(sortOption) => {
+                setSortBy(sortOption);
+              }}
+              orderBy={orderBy}
+              onOrderByChange={(orderOption) => {
+                setOrderBy(orderOption);
+              }}
+            />
+          </div>
+        </section>
       </div>
       <ul>{displayBoard(boards)}</ul>
     </section>

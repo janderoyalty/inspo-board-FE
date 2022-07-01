@@ -1,15 +1,21 @@
 .board{
   display: grid;
   /* grid-template-columns: 15% 85%; */
-  grid-template-rows: 20% 80%;
+  grid-template-rows: 20vh 10vh 70vh;
 }
 
 .board--title{
   grid-row: 1;
 }
 
-.board--content{
+.board--nav{
   grid-row: 2;
+  display: flex;
+  justify-content: space-between;
+}
+
+.board--cards{
+  grid-row: 3;
   display: grid;
   grid-template-rows: 10% 90%;
 }
