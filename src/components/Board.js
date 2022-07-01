@@ -7,7 +7,7 @@ import SortMenu from "./SortMenu";
 import "./Board.css";
 import PropTypes from "prop-types";
 
-const Board = ({ board }) => {
+const Board = ({ board, onDeleteCallback }) => {
   const [cardData, setCardData] = useState([]);
   const [sortBy, setSortBy] = useState("id");
   const [orderBy, setOrderBy] = useState("desc");
@@ -117,6 +117,13 @@ const Board = ({ board }) => {
       <div className="board--title">
         <h1>{board.title}</h1>
         <h2>by {board.owner}</h2>
+        <button
+          onClick={() => {
+            onDeleteCallback(board.id);
+          }}
+        >
+          Delete Board
+        </button>
       </div>
       <div className="board--content">
         <div className="sort-menu--container">
@@ -158,6 +165,7 @@ Board.propTypes = {
     owner: PropTypes.string.isRequired,
     title: PropTypes.string.isRequired,
   }),
+  onDeleteCallback: PropTypes.func.isRequired,
 };
 
 export default Board;

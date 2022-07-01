@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import PropTypes from "prop-types";
 import SortBoardMenu from "./SortBoardMenu";
 
-const BoardList = ({ boards, selectBoard, onDeleteCallback }) => {
+const BoardList = ({ boards, selectBoard }) => {
   const [sortBy, setSortBy] = useState("id");
   const [orderBy, setOrderBy] = useState("desc");
 

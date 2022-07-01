@@ -1,4 +1,4 @@
-#sortMenu {
+#sort-menu {
   border: 1px solid black;
   margin: 1rem;
   padding: .5rem;
@@ -15,7 +15,7 @@
   text-decoration: underline;
 }
 
-.menuItem {
+.menu-item {
   background-color: transparent;
   border: none;
   cursor: pointer;
