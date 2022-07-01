@@ -1,3 +1,20 @@
+.board{
+  display: grid;
+  /* grid-template-columns: 15% 85%; */
+  grid-template-rows: 20% 80%;
+}
+
+.board--title{
+  grid-row: 1;
+}
+
+.board--content{
+  grid-row: 2;
+  display: grid;
+  grid-template-rows: 10% 90%;
+}
+
 .cards {
   display: flex;
+  grid-column: 2;
 }

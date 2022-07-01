@@ -6,7 +6,10 @@
   width: fit-content;
 }
 
-.sortMenuLabel {
+.sort-menu--container {
+  grid-column: 1;
+}
+.sort-menuLabel {
   font-weight: bold;
   margin: 0;
   text-decoration: underline;
