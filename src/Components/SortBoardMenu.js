@@ -2,18 +2,23 @@ import { BiCheck } from "react-icons/bi";
 import "./SortMenu.css";
 import PropTypes from "prop-types";
 
-const SortMenu = ({ sortBy, onSortByChange, orderBy, onOrderByChange }) => {
+const SortBoardMenu = ({
+  sortBy,
+  onSortByChange,
+  orderBy,
+  onOrderByChange,
+}) => {
   return (
     <section id="sort-menu">
       <h4 className="sort-menuLabel">sort by</h4>
-      <button onClick={() => onSortByChange("likeCount")} className="menuItem">
-        likes {sortBy === "likeCount" && <BiCheck id="checkMark" />}
+      <button onClick={() => onSortByChange("title")} className="menuItem">
+        title {sortBy === "title" && <BiCheck id="checkMark" />}
+      </button>
+      <button onClick={() => onSortByChange("owner")} className="menuItem">
+        owner {sortBy === "owner" && <BiCheck id="checkMark" />}
       </button>
       <button onClick={() => onSortByChange("id")} className="menuItem">
         date added {sortBy === "id" && <BiCheck id="checkMark" />}
-      </button>
-      <button onClick={() => onSortByChange("message")} className="menuItem">
-        message {sortBy === "message" && <BiCheck id="checkMark" />}
       </button>
       <h4 className="sort-menuLabel">order</h4>
       <button onClick={() => onOrderByChange("asc")} className="menuItem">
@@ -26,11 +31,11 @@ const SortMenu = ({ sortBy, onSortByChange, orderBy, onOrderByChange }) => {
   );
 };
 
-SortMenu.propTypes = {
+SortBoardMenu.propTypes = {
   sortBy: PropTypes.string.isRequired,
   onSortByChange: PropTypes.func.isRequired,
   orderBy: PropTypes.string.isRequired,
   onOrderByChange: PropTypes.func.isRequired,
 };
 
-export default SortMenu;
+export default SortBoardMenu;

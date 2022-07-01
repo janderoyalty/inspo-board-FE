@@ -16,3 +16,20 @@
 ul {
   list-style-type: none;
 }
+
+.board-container {
+  display: grid;
+  grid-template-columns: 35vw 65vw;
+  grid-template-rows: 100vh;
+  margin: 0;
+}
+
+.board-containter--white {
+  grid-column: 1;
+  grid-row: 1;
+}
+
+.board-containter--cork {
+  grid-column: 2;
+  grid-row: 1;
+}
