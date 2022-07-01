@@ -6,20 +6,20 @@ const SortMenu = ({ sortBy, onSortByChange, orderBy, onOrderByChange }) => {
   return (
     <section id="sort-menu">
       <h4 className="sort-menuLabel">sort by</h4>
-      <button onClick={() => onSortByChange("likeCount")} className="menuItem">
+      <button onClick={() => onSortByChange("likeCount")} className="menu-item">
         likes {sortBy === "likeCount" && <BiCheck id="checkMark" />}
       </button>
-      <button onClick={() => onSortByChange("id")} className="menuItem">
+      <button onClick={() => onSortByChange("id")} className="menu-item">
         date added {sortBy === "id" && <BiCheck id="checkMark" />}
       </button>
-      <button onClick={() => onSortByChange("message")} className="menuItem">
+      <button onClick={() => onSortByChange("message")} className="menu-item">
         message {sortBy === "message" && <BiCheck id="checkMark" />}
       </button>
       <h4 className="sort-menuLabel">order</h4>
-      <button onClick={() => onOrderByChange("asc")} className="menuItem">
+      <button onClick={() => onOrderByChange("asc")} className="menu-item">
         ascending {orderBy === "asc" && <BiCheck id="checkMark" />}
       </button>
-      <button onClick={() => onOrderByChange("desc")} className="menuItem">
+      <button onClick={() => onOrderByChange("desc")} className="menu-item">
         descending {orderBy === "desc" && <BiCheck id="checkMark" />}
       </button>
     </section>

@@ -79,6 +79,7 @@ const App = () => {
   };
 
   const deleteBoard = (boardId) => {
+    console.log("I am deleteBoard Func");
     setSelected({});
     axios
       .delete(`${URL}/boards/${boardId}`)
@@ -97,22 +98,13 @@ const App = () => {
       <div className="board-container">
         <div className="board-containter--white">
           <NewBoardForm onAddBoardCallback={addBoard} />
-          <BoardList
-            selectBoard={selectBoard}
-            boards={boardData}
-            onDeleteCallback={deleteBoard}
-          />
+          <BoardList selectBoard={selectBoard} boards={boardData} />
           <UpdateBoardForm updateBoardCallback={updateBoard} />
-          <button
-            onClick={() => {
-              deleteBoard(selected.id);
-            }}
-          >
-            Delete Board
-          </button>
         </div>
         <div className="board-containter--cork">
-          {selected.id && <Board board={selected} />}
+          {selected.id && (
+            <Board board={selected} onDeleteCallback={deleteBoard} />
+          )}
         </div>
       </div>
     </div>
