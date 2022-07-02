@@ -3,12 +3,13 @@ import axios from "axios";
 import Card from "./Card";
 import { URL } from "../App";
 import NewCardForm from "./NewCardForm";
+import UpdateBoardForm from "./UpdateBoardForm";
 import SortMenu from "./SortMenu";
 import "./Board.css";
 import PropTypes from "prop-types";
 import { BiSort } from "react-icons/bi";
 
-const Board = ({ board, onDeleteCallback }) => {
+const Board = ({ board, onDeleteCallback, updateBoardCallback }) => {
   const [cardData, setCardData] = useState([]);
   const [sortBy, setSortBy] = useState("id");
   const [orderBy, setOrderBy] = useState("desc");
@@ -121,13 +122,6 @@ const Board = ({ board, onDeleteCallback }) => {
       <div className="board--title">
         <h1>{board.title}</h1>
         <h2>by {board.owner}</h2>
-        <button
-          onClick={() => {
-            onDeleteCallback(board.id);
-          }}
-        >
-          Delete Board
-        </button>
       </div>
       <div className="board--nav">
         <div>
@@ -149,6 +143,14 @@ const Board = ({ board, onDeleteCallback }) => {
             </div>
           </section>
         </div>
+        <UpdateBoardForm updateBoardCallback={updateBoardCallback} />
+        <button
+          onClick={() => {
+            onDeleteCallback(board.id);
+          }}
+        >
+          Delete Board
+        </button>
         <NewCardForm boardId={board.id} onAddCardCallback={addNewCard} />
       </div>
       <div className="board--cards">
