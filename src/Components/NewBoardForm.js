@@ -23,7 +23,7 @@ const NewBoardForm = ({ onAddBoardCallback }) => {
 
   return (
     <div>
-      <MdAddBox onClick={() => setHide(!hide)}>{hide ? "Show" : "Hide"}</MdAddBox>
+      <MdAddBox className="icons" size={30} onClick={() => setHide(!hide)}>{hide ? "Show" : "Hide"}</MdAddBox>
       <div className={shown}>
         <form onSubmit={submitBoardData} className="new-board__form">
           <section>

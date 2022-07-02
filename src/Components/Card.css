@@ -23,3 +23,7 @@
   display: flex;
   justify-content: space-evenly;
 }
+
+.card-icons {
+  color: #466060;
+}

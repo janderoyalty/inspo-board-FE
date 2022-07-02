@@ -8,6 +8,7 @@ import SortMenu from "./SortMenu";
 import "./Board.css";
 import PropTypes from "prop-types";
 import { BiSort } from "react-icons/bi";
+import { TiDeleteOutline } from "react-icons/ti";
 
 const Board = ({ board, onDeleteCallback, updateBoardCallback }) => {
   const [cardData, setCardData] = useState([]);
@@ -125,7 +126,7 @@ const Board = ({ board, onDeleteCallback, updateBoardCallback }) => {
       </div>
       <div className="board--nav">
         <div>
-          <BiSort onClick={() => setHide(!hide)}>
+          <BiSort className="icons" size={30} onClick={() => setHide(!hide)}>
             {hide ? "Show" : "Hide"}
           </BiSort>
           <section className={shown}>
@@ -144,13 +145,11 @@ const Board = ({ board, onDeleteCallback, updateBoardCallback }) => {
           </section>
         </div>
         <UpdateBoardForm updateBoardCallback={updateBoardCallback} />
-        <button
-          onClick={() => {
-            onDeleteCallback(board.id);
-          }}
-        >
-          Delete Board
-        </button>
+        <TiDeleteOutline
+          className="icons"
+          size={30}
+          onClick={() => onDeleteCallback(board.id)}
+        />
         <NewCardForm boardId={board.id} onAddCardCallback={addNewCard} />
       </div>
       <div className="board--cards">
@@ -182,6 +181,7 @@ Board.propTypes = {
     title: PropTypes.string.isRequired,
   }),
   onDeleteCallback: PropTypes.func.isRequired,
+  updateBoardCallback: PropTypes.func.isRequired,
 };
 
 export default Board;

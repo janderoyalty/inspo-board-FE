@@ -24,7 +24,7 @@ const NewCardForm = ({ onAddCardCallback }) => {
 
   return (
     <div>
-      <MdAddBox onClick={() => setHide(!hide)}>
+      <MdAddBox className="icons" size={30} onClick={() => setHide(!hide)}>
         {hide ? "Show" : "Hide"}
       </MdAddBox>
       <section className={shown}>

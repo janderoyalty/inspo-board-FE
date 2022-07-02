@@ -27,7 +27,9 @@ const UpdateBoardForm = ({ updateBoardCallback }) => {
 
   return (
     <div>
-      <AiOutlineForm onClick={() => setHide(!hide)}>{hide ? "Show" : "Hide"}</AiOutlineForm>
+      <AiOutlineForm className="icons" size={30} onClick={() => setHide(!hide)}>
+        {hide ? "Show" : "Hide"}
+      </AiOutlineForm>
       <div className={shown}>
         <h2>Update Board</h2>
         <form onSubmit={updateBoard}>

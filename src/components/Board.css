@@ -1,7 +1,7 @@
 .board{
   display: grid;
   /* grid-template-columns: 15% 85%; */
-  grid-template-rows: 20vh 10vh 70vh;
+  grid-template-rows: 20vh 30vh 50vh;
 }
 
 .board--title{
@@ -23,4 +23,10 @@
 .cards {
   display: flex;
   grid-column: 2;
+  flex-wrap: wrap;
+}
+
+.icons {
+  size: 50px;
+  color: #C05746;
 }
