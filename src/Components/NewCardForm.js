@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import PropTypes from "prop-types";
 import { MdAddBox } from "react-icons/md";
 
-
 const NewCardForm = ({ onAddCardCallback }) => {
   const [hide, setHide] = useState(true);
 
@@ -25,9 +24,9 @@ const NewCardForm = ({ onAddCardCallback }) => {
 
   return (
     <div>
-      <button onClick={() => setHide(!hide)}>
-        {(hide ? "Show" : "Hide") + " New Card Form"}
-      </button>
+      <MdAddBox onClick={() => setHide(!hide)}>
+        {hide ? "Show" : "Hide"}
+      </MdAddBox>
       <section className={shown}>
         <h1>Add A New Card</h1>
         <form onSubmit={submitCardData}>

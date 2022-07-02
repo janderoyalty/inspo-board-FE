@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import PropTypes from "prop-types";
+import { MdAddBox } from "react-icons/md";
 
 const NewBoardForm = ({ onAddBoardCallback }) => {
   const [boardData, setBoardData] = useState({
@@ -22,9 +23,7 @@ const NewBoardForm = ({ onAddBoardCallback }) => {
 
   return (
     <div>
-      <button onClick={() => setHide(!hide)}>
-        {hide ? "Show Add Board Form" : "Hide Add Board Form"}
-      </button>
+      <MdAddBox onClick={() => setHide(!hide)}>{hide ? "Show" : "Hide"}</MdAddBox>
       <div className={shown}>
         <form onSubmit={submitBoardData} className="new-board__form">
           <section>

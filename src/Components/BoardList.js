@@ -7,6 +7,7 @@ const BoardList = ({ boards, selectBoard }) => {
   const [sortBy, setSortBy] = useState("id");
   const [orderBy, setOrderBy] = useState("desc");
   const [hide, setHide] = useState(true);
+  
 
   const shown = hide ? "hidden" : "shown";
   const sortedBoards = boards.sort((a, b) => {

@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import PropTypes from "prop-types";
 import "./Forms.css";
+import { AiOutlineForm } from "react-icons/ai";
 
 const UpdateBoardForm = ({ updateBoardCallback }) => {
   const blankFormData = { title: "", owner: "" };
@@ -26,9 +27,7 @@ const UpdateBoardForm = ({ updateBoardCallback }) => {
 
   return (
     <div>
-      <button onClick={() => setHide(!hide)}>
-        {(hide ? "Show" : "Hide") + " Update Board Form"}
-      </button>
+      <AiOutlineForm onClick={() => setHide(!hide)}>{hide ? "Show" : "Hide"}</AiOutlineForm>
       <div className={shown}>
         <h2>Update Board</h2>
         <form onSubmit={updateBoard}>
