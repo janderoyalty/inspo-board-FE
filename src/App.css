@@ -25,8 +25,12 @@ ul {
 }
 
 .board-containter--cork {
+  width: 100%;
   grid-column: 2;
   grid-row: 1;
+  background-image: url("/images/josephine-bredehoft-KsAo8ouBn8A-unsplash.jpeg");
+  background-repeat: no-repeat;
+  background-size: cover;
 }
 
 .board-containter--letter {
@@ -42,9 +46,9 @@ ul {
   text-shadow: 1px 1px #666, 3px 3px #000;
   color: #fff;
   
-  width: 100%;
-  height: 100%;
-  padding: 20px;
+  /* width: 100%; */
+  /* height: 100%; */
+  padding: 20px 0 0 0;
   overflow: hidden;
   border: 10px solid #eee;
   
