@@ -1,8 +1,6 @@
 import "./App.css";
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-// import UpdateBoardForm from "./Components/UpdateBoardForm";
-// import NewBoardForm from "./Components/NewBoardForm";
 import Board from "./Components/Board";
 import BoardList from "./Components/BoardList";
 
@@ -96,13 +94,20 @@ const App = () => {
   return (
     <div className="App">
       <div className="board-container">
-        <div className="board-containter--white">
-          {/* <NewBoardForm onAddBoardCallback={addBoard} /> */}
-          <BoardList selectBoard={selectBoard} boards={boardData} onAddBoardCallback={addBoard} />
+        <div className="board-containter--letter">
+          <BoardList
+            selectBoard={selectBoard}
+            boards={boardData}
+            onAddBoardCallback={addBoard}
+          />
         </div>
         <div className="board-containter--cork">
           {selected.id && (
-            <Board board={selected} onDeleteCallback={deleteBoard} updateBoardCallback={updateBoard}/>
+            <Board
+              board={selected}
+              onDeleteCallback={deleteBoard}
+              updateBoardCallback={updateBoard}
+            />
           )}
         </div>
       </div>

@@ -119,7 +119,7 @@ const Board = ({ board, onDeleteCallback, updateBoardCallback }) => {
   };
 
   return (
-    <div className="board">
+    <div>
       <div className="board--title">
         <h1>{board.title}</h1>
         <h2>by {board.owner}</h2>
