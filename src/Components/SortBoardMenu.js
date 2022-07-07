@@ -1,5 +1,5 @@
 import { BiCheck } from "react-icons/bi";
-import "./SortMenu.css";
+import "./SortBoardMenu.css";
 import PropTypes from "prop-types";
 
 const SortBoardMenu = ({
@@ -9,23 +9,36 @@ const SortBoardMenu = ({
   onOrderByChange,
 }) => {
   return (
-    <section id="sort-menu">
-      <h4 className="sort-menuLabel">sort by</h4>
-      <button onClick={() => onSortByChange("title")} className="menu-item">
-        title {sortBy === "title" && <BiCheck id="checkMark" />}
+    <section id="sort-board-menu">
+      <h4 className="sort-board-menu--label">sort by</h4>
+      <button
+        onClick={() => onSortByChange("title")}
+        className="board-menu-item"
+      >
+        title {sortBy === "title" && <BiCheck id="board-menu--check-mark" />}
       </button>
-      <button onClick={() => onSortByChange("owner")} className="menu-item">
-        owner {sortBy === "owner" && <BiCheck id="checkMark" />}
+      <button
+        onClick={() => onSortByChange("owner")}
+        className="board-menu-item"
+      >
+        owner {sortBy === "owner" && <BiCheck id="board-menu--check-mark" />}
       </button>
-      <button onClick={() => onSortByChange("id")} className="menu-item">
-        date added {sortBy === "id" && <BiCheck id="checkMark" />}
+      <button onClick={() => onSortByChange("id")} className="board-menu-item">
+        date added {sortBy === "id" && <BiCheck id="board-menu--check-mark" />}
       </button>
-      <h4 className="sort-menuLabel">order</h4>
-      <button onClick={() => onOrderByChange("asc")} className="menu-item">
-        ascending {orderBy === "asc" && <BiCheck id="checkMark" />}
+      <h4 className="sort-board-menu--label">order</h4>
+      <button
+        onClick={() => onOrderByChange("asc")}
+        className="board-menu-item"
+      >
+        ascending {orderBy === "asc" && <BiCheck id="board-menu--check-mark" />}
       </button>
-      <button onClick={() => onOrderByChange("desc")} className="menu-item">
-        descending {orderBy === "desc" && <BiCheck id="checkMark" />}
+      <button
+        onClick={() => onOrderByChange("desc")}
+        className="board-menu-item"
+      >
+        descending{" "}
+        {orderBy === "desc" && <BiCheck id="board-menu--check-mark" />}
       </button>
     </section>
   );
