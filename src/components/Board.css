@@ -28,5 +28,29 @@
 
 .icons {
   size: 50px;
-  color: #C05746;
+  color: #f9f9f9;
+}
+
+.insetshadow {
+  /* font-family: "Avant Garde", Avantgarde, "Century Gothic", CenturyGothic, "AppleGothic", sans-serif; */
+  font-family: "Doris", sans-serif;
+  margin: 2%;
+  text-align: center;
+  text-transform: uppercase;
+  text-rendering: optimizeLegibility;
+  
+  background-color: #b3b3b3;
+  color: transparent;
+  text-shadow: 0px 2px 3px rgba(255,255,255,0.7);
+  -webkit-background-clip: text;
+    -moz-background-clip: text;
+      background-clip: text;
+}
+
+h1{
+  font-size: 6.5vmax;
+}
+
+h2{
+  font-size: 3.25vmax;
 }

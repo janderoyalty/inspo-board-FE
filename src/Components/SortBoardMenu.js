@@ -26,6 +26,7 @@ const SortBoardMenu = ({
       <button onClick={() => onSortByChange("id")} className="board-menu-item">
         date added {sortBy === "id" && <BiCheck id="board-menu--check-mark" />}
       </button>
+      <br />
       <h4 className="sort-board-menu--label">order</h4>
       <button
         onClick={() => onOrderByChange("asc")}

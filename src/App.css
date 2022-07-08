@@ -15,6 +15,8 @@
 
 ul {
   list-style-type: none;
+  line-height: 2.5;
+  padding: 0;
 }
 
 .board-container {
@@ -42,15 +44,15 @@ ul {
   letter-spacing: .15em;
   text-transform: uppercase;
   text-align: center;
-  line-height: 1.5;
   text-shadow: 1px 1px #666, 3px 3px #000;
   color: #fff;
   
   /* width: 100%; */
   /* height: 100%; */
   padding: 20px 0 0 0;
-  overflow: hidden;
+  overflow: scroll;
   border: 10px solid #eee;
   
   background: linear-gradient( #0e0e0e 65%, #030303 66%) top .3em center / 100% .80em repeat-y;
 }
+
