@@ -120,9 +120,9 @@ const Board = ({ board, onDeleteCallback, updateBoardCallback }) => {
 
   return (
     <div>
-      <div className="board--title">
-        <h1>{board.title}</h1>
-        <h2>by {board.owner}</h2>
+      <div className="board--title ">
+        <h1 className="insetshadow">{board.title}</h1>
+        <h2 className="insetshadow">by {board.owner}</h2>
       </div>
       <div className="board--nav">
         <div>

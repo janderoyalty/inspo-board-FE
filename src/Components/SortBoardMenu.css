@@ -37,3 +37,9 @@
 #board-menu--check-mark {
   vertical-align: text-bottom;
 }
+
+h4.sort-board-menu--label {
+  margin-block-start: 0;
+  margin-block-end: 0.5em;
+  /* text-align: center; */
+}
