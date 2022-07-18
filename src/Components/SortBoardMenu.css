@@ -34,6 +34,10 @@
   margin-top: .25rem;
 }
 
+.board-menu-item__selected {
+  color: aquamarine;
+}
+
 #board-menu--check-mark {
   vertical-align: text-bottom;
 }

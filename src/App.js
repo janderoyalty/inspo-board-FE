@@ -101,6 +101,7 @@ const App = () => {
                 <div className='board-containter--letter'>
                     <BoardList
                         selectBoard={selectBoard}
+                        selected={selected}
                         boards={boardData}
                         onAddBoardCallback={addBoard}
                     />
