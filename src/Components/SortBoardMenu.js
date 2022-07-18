@@ -1,6 +1,6 @@
 import { BiCheck } from "react-icons/bi";
-import "./SortBoardMenu.css";
 import PropTypes from "prop-types";
+import "./SortBoardMenu.css";
 
 const SortBoardMenu = ({
   sortBy,
