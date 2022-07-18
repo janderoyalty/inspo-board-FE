@@ -18,12 +18,15 @@
   grid-row: 3;
   display: grid;
   grid-template-rows: 10% 90%;
+  overflow: scroll;
 }
 
 .cards {
   display: flex;
   grid-column: 2;
   flex-wrap: wrap;
+  overflow: scroll;
+  height: 100vh;
 }
 
 .icons {
@@ -48,9 +51,9 @@
 }
 
 h1{
-  font-size: 6.5vmax;
+  font-size: 5.5vmax;
 }
 
 h2{
-  font-size: 3.25vmax;
+  font-size: 2.75vmax;
 }
