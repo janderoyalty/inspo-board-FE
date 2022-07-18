@@ -2,6 +2,14 @@
   text-align: center;
 }
 
+body{
+  background-image: url("/images/josephine-bredehoft-KsAo8ouBn8A-unsplash.jpeg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-attachment: fixed;
+
+}
+
 .App-header {
   background-color: #282c34;
   min-height: 100vh;
@@ -30,9 +38,6 @@ ul {
   width: 100%;
   grid-column: 2;
   grid-row: 1;
-  background-image: url("/images/josephine-bredehoft-KsAo8ouBn8A-unsplash.jpeg");
-  background-repeat: no-repeat;
-  background-size: cover;
 }
 
 .board-containter--letter {
