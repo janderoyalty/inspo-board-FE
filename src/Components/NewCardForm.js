@@ -40,7 +40,11 @@ const NewCardForm = ({ onAddCardCallback }) => {
               onChange={handleCardMessageChange}
             ></input>
             <div>
-              <button className="add-card-form_button" type="submit">
+              <button
+                className="add-card-form_button"
+                type="submit"
+                onClick={() => setHide(!hide)}
+              >
                 Add Card
               </button>
             </div>
