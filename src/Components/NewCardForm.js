@@ -30,7 +30,7 @@ const NewCardForm = ({ onAddCardCallback }) => {
       </MdAddBox>
       <section className={shown}>
         <div className="add-card">
-          <h3>Add A New Card</h3>
+          <h3>Add New Card</h3>
           <form className="add-card-form" onSubmit={submitCardData}>
             <label className="new-card-label"> Message</label>
             <input
@@ -41,7 +41,7 @@ const NewCardForm = ({ onAddCardCallback }) => {
             ></input>
             <div>
               <button className="add-card-form_button" type="submit">
-                Submit
+                Add Card
               </button>
             </div>
           </form>

@@ -10,6 +10,8 @@
 
 .sort-menu--container {
   grid-column: 1;
+  display: flex;
+  justify-content: center;
 }
 .sort-menu-label {
   font-weight: bold;
