@@ -8,6 +8,7 @@
     grid-template-rows: auto auto;
     text-align: left;
     align-content: center;
+    margin: 1rem;
 }
 
 .add-card-form {

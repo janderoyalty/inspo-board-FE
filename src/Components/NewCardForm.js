@@ -39,9 +39,11 @@ const NewCardForm = ({ onAddCardCallback }) => {
               value={cardData.cardMessage}
               onChange={handleCardMessageChange}
             ></input>
-            <button className="add-card-form_button" type="submit">
-              submit
-            </button>
+            <div>
+              <button className="add-card-form_button" type="submit">
+                Submit
+              </button>
+            </div>
           </form>
         </div>
       </section>

@@ -35,7 +35,6 @@ const UpdateBoardForm = ({ updateBoardCallback }) => {
         <div className="update-board">
           <h3>Update Board</h3>
           <form className="update-board-form" onSubmit={updateBoard}>
-            {/* <div> */}
             <label htmlFor="title">Title</label>
             <input
               onChange={updateFormData}
@@ -44,8 +43,6 @@ const UpdateBoardForm = ({ updateBoardCallback }) => {
               type="text"
               value={formData.title}
             />
-            {/* </div> */}
-            {/* <div> */}
             <label htmlFor="owner">Owner</label>
             <input
               onChange={updateFormData}
@@ -54,10 +51,11 @@ const UpdateBoardForm = ({ updateBoardCallback }) => {
               type="owner"
               value={formData.owner}
             />
-            {/* </div> */}
-            <button className="update-board-form_button" type="submit">
-              Update Board
-            </button>
+            <div>
+              <button className="update-board-form_button" type="submit">
+                Update Board
+              </button>
+            </div>
           </form>
         </div>
       </div>
