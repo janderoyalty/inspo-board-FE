@@ -1,5 +1,5 @@
 .verify-delete-board {
-  background-color: #fff;
+  background-color: rgba(255,255,255,0.7);
   border: 1px dotted black;
   border-radius: 5px;
   font: bold black 1rem 'Dosis';

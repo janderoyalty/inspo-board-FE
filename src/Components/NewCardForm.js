@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import PropTypes from "prop-types";
 import { MdAddBox } from "react-icons/md";
+import "./NewCardForm.css";
 
 const NewCardForm = ({ onAddCardCallback }) => {
   const [hide, setHide] = useState(true);
@@ -28,19 +29,21 @@ const NewCardForm = ({ onAddCardCallback }) => {
         {hide ? "Show" : "Hide"}
       </MdAddBox>
       <section className={shown}>
-        <h1>Add A New Card</h1>
-        <form onSubmit={submitCardData}>
-          <label className="new-card-label"> Message:</label>
-          <input
-            className="new-card-input"
-            type="text"
-            value={cardData.cardMessage}
-            onChange={handleCardMessageChange}
-          ></input>
-          <button className="new-card-submit-button" type="submit">
-            submit
-          </button>
-        </form>
+        <div className="add-card">
+          <h3>Add A New Card</h3>
+          <form className="add-card-form" onSubmit={submitCardData}>
+            <label className="new-card-label"> Message</label>
+            <input
+              className="new-card-input"
+              type="text"
+              value={cardData.cardMessage}
+              onChange={handleCardMessageChange}
+            ></input>
+            <button className="add-card-form_button" type="submit">
+              submit
+            </button>
+          </form>
+        </div>
       </section>
     </div>
   );
