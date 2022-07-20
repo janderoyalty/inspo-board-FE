@@ -1,13 +1,12 @@
-import './App.css';
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import BoardList from './Components/BoardList';
+import './App.css';
 import Board from './Components/Board';
+import BoardList from './Components/BoardList';
 
 export const URL = 'https://ma5en-inspo-board-be.herokuapp.com';
 
 const App = () => {
-    // BRAINS
     const [boardData, setBoardData] = useState([]);
     const [selected, setSelected] = useState({});
 

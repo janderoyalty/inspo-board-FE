@@ -1,63 +1,40 @@
 import React, { useState, useEffect } from 'react';
-
 import axios from 'axios';
-
-import Card from './Card';
-
-import { URL } from '../App';
-
-import NewCardForm from './NewCardForm';
-
-import UpdateBoardForm from './UpdateBoardForm';
-
-import SortMenu from './SortMenu';
-
-import './Board.css';
-
 import PropTypes from 'prop-types';
-
-import { BiSort } from 'react-icons/bi';
-
-import { TiDeleteOutline } from 'react-icons/ti';
-
+import './Board.css';
+import Card from './Card';
+import NewCardForm from './NewCardForm';
+import UpdateBoardForm from './UpdateBoardForm';
+import SortMenu from './SortMenu';
 import VerifyDeleteBoard from './VerifyDeleteBoard';
+import { URL } from '../App';
+import { BiSort } from 'react-icons/bi';
+import { TiDeleteOutline } from 'react-icons/ti';
 
 const Board = ({ board, onDeleteCallback, updateBoardCallback }) => {
     const [cardData, setCardData] = useState([]);
-
     const [sortBy, setSortBy] = useState('id');
-
     const [orderBy, setOrderBy] = useState('desc');
-
     const [hideSort, setHideSort] = useState(true);
-
     const [hideDelete, setHideDelete] = useState(true);
-
     const [deleteAttempt, setDeleteAttempt] = useState(false);
 
     const shownSort = hideSort ? 'hidden' : 'shown';
-
     const shownDelete = hideDelete ? 'hidden' : 'shown';
 
     const getCards = () => {
         axios
-
             .get(`${URL}/boards/${board.id}/cards`)
-
             .then((response) => {
                 const newData = response.data.map((card) => {
                     return {
                         id: card.card_id,
-
                         message: card.message,
-
                         likeCount: card.like_count,
                     };
                 });
-
                 setCardData(newData);
             })
-
             .catch((err) => {
                 alert(err);
             });
@@ -67,13 +44,10 @@ const Board = ({ board, onDeleteCallback, updateBoardCallback }) => {
 
     const sortedCards = cardData.sort((a, b) => {
         let order = orderBy === 'asc' ? 1 : -1;
-
         let sortByA =
             sortBy === 'message' ? a[sortBy].toLowerCase() : a[sortBy];
-
         let sortByB =
             sortBy === 'message' ? b[sortBy].toLowerCase() : b[sortBy];
-
         return sortByA < sortByB ? -1 * order : 1 * order;
     });
 
@@ -90,17 +64,12 @@ const Board = ({ board, onDeleteCallback, updateBoardCallback }) => {
     const addNewCard = (newCard) => {
         validateCardData(newCard) &&
             axios
-
                 .post(`${URL}/boards/${board.id}/cards`, newCard)
-
                 .then((response) => {
                     console.log('a new card has been posted');
-
                     const cards = [...cardData, response.data];
-
                     setCardData(cards);
                 })
-
                 .catch((error) => {
                     console.log(error);
                 });
@@ -109,25 +78,20 @@ const Board = ({ board, onDeleteCallback, updateBoardCallback }) => {
     const updateCard = (id, message) => {
         validateCardData({ message }) &&
             axios
-
                 .patch(`${URL}/cards/${id}`, { message })
-
                 .then(() => {
                     const newCardData = cardData.map((card) => {
                         if (card.id === id) {
                             return {
                                 ...card,
-
                                 [message]: message,
                             };
                         } else {
                             return card;
                         }
                     });
-
                     setCardData(newCardData);
                 })
-
                 .catch((err) => {
                     alert(err);
                 });
@@ -136,9 +100,7 @@ const Board = ({ board, onDeleteCallback, updateBoardCallback }) => {
     const deleteCard = async (id) => {
         try {
             await axios.delete(`${URL}/cards/${id}`);
-
             const newCardData = cardData.filter((card) => card.id !== id);
-
             setCardData(newCardData);
         } catch (err) {
             alert(err);
@@ -148,19 +110,16 @@ const Board = ({ board, onDeleteCallback, updateBoardCallback }) => {
     const updateLikes = async (id) => {
         try {
             await axios.patch(`${URL}/cards/${id}/like`);
-
             const newCardData = cardData.map((card) => {
                 if (card.id === id) {
                     return {
                         ...card,
-
                         likeCount: card.likeCount + 1,
                     };
                 } else {
                     return card;
                 }
             });
-
             setCardData(newCardData);
         } catch (err) {
             alert(err);
@@ -171,10 +130,8 @@ const Board = ({ board, onDeleteCallback, updateBoardCallback }) => {
         <div>
             <div className='board--title '>
                 <h1 className='insetshadow'>{board.title}</h1>
-
                 <h2 className='insetshadow'>by {board.owner}</h2>
             </div>
-
             <div className='board--nav'>
                 <div>
                     <BiSort
@@ -183,7 +140,6 @@ const Board = ({ board, onDeleteCallback, updateBoardCallback }) => {
                         onClick={() => setHideSort(!hideSort)}>
                         {hideSort ? 'Show' : 'Hide'}
                     </BiSort>
-
                     <section className={shownSort}>
                         <div className='sort-menu--container'>
                             <SortMenu
@@ -199,21 +155,17 @@ const Board = ({ board, onDeleteCallback, updateBoardCallback }) => {
                         </div>
                     </section>
                 </div>
-
                 <UpdateBoardForm updateBoardCallback={updateBoardCallback} />
-
                 <div>
                     <TiDeleteOutline
                         className='icons'
                         size={30}
                         onClick={() => {
                             setDeleteAttempt(true);
-
                             setHideDelete(!hideDelete);
                         }}>
                         {hideDelete ? 'Show' : 'Hide'}
                     </TiDeleteOutline>
-
                     <section className={shownDelete}>
                         {deleteAttempt && (
                             <VerifyDeleteBoard
@@ -257,14 +209,10 @@ const Board = ({ board, onDeleteCallback, updateBoardCallback }) => {
 Board.propTypes = {
     board: PropTypes.shape({
         id: PropTypes.number.isRequired,
-
         owner: PropTypes.string.isRequired,
-
         title: PropTypes.string.isRequired,
     }),
-
     onDeleteCallback: PropTypes.func.isRequired,
-
     updateBoardCallback: PropTypes.func.isRequired,
 };
 
