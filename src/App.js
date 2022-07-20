@@ -1,8 +1,8 @@
 import './App.css';
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import Board from '../src/Components/Board';
-import BoardList from '../src/Components/BoardList';
+import BoardList from './Components/BoardList';
+import Board from './Components/Board';
 
 export const URL = 'https://ma5en-inspo-board-be.herokuapp.com';
 
