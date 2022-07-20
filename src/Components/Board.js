@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import PropTypes from 'prop-types';
-import './Board.css';
+import './Styles/Board.css';
 import Card from './Card';
-import NewCardForm from './NewCardForm';
-import UpdateBoardForm from './UpdateBoardForm';
+import NewCardForm from './Forms/NewCardForm';
+import UpdateBoardForm from './Forms/UpdateBoardForm';
 import SortMenu from './SortMenu';
 import VerifyDeleteBoard from './VerifyDeleteBoard';
 import { URL } from '../App';

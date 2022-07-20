@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
-import './Forms.css';
+import '../Styles/Forms.css';
 import { AiOutlineForm } from 'react-icons/ai';
-import './UpdateBoardForm.css';
+import '../Styles/UpdateBoardForm.css';
 
 const UpdateBoardForm = ({ board, updateBoardCallback }) => {
     const existingFormData = { title: board.title, owner: board.owner };

@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import './Card.css';
-import UpdateCardForm from './UpdateCardForm';
+import './Styles/Card.css';
+import UpdateCardForm from './Forms/UpdateCardForm';
 import { TiDeleteOutline } from 'react-icons/ti';
 import { BiHeartCircle } from 'react-icons/bi';
 

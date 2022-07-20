@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
-import './Forms.css';
+import '../Styles/Forms.css';
 import { AiOutlineForm } from 'react-icons/ai';
 
 const UpdateCardForm = ({ updateCardCallback, cardId, existingMessage }) => {

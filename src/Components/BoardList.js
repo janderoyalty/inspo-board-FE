@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import SortBoardMenu from './SortBoardMenu';
 import { BiSort } from 'react-icons/bi';
-import NewBoardForm from './NewBoardForm';
+import NewBoardForm from './Forms/NewBoardForm';
 
 const BoardList = ({ boards, selected, selectBoard, onAddBoardCallback }) => {
     const [sortBy, setSortBy] = useState('id');
