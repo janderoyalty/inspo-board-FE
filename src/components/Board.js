@@ -42,7 +42,11 @@ const Board = ({ board, onDeleteCallback, updateBoardCallback }) => {
 
     const sortedCards = cardData.sort((a, b) => {
         let order = orderBy === 'asc' ? 1 : -1;
-        return a[sortBy] < b[sortBy] ? -1 * order : 1 * order;
+        let sortByA =
+            sortBy === 'message' ? a[sortBy].toLowerCase() : a[sortBy];
+        let sortByB =
+            sortBy === 'message' ? b[sortBy].toLowerCase() : b[sortBy];
+        return sortByA < sortByB ? -1 * order : 1 * order;
     });
 
     const validateCardData = (newCardInfo) => {
