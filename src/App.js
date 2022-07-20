@@ -93,7 +93,6 @@ const App = () => {
             });
     };
 
-    // BEAUTY
     return (
         <div className='App'>
             <div className='board-container'>

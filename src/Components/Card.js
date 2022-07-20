@@ -2,8 +2,8 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import './Card.css';
 import UpdateCardForm from './UpdateCardForm';
-import { TiDeleteOutline } from "react-icons/ti";
-import { BiHeartCircle } from "react-icons/bi";
+import { TiDeleteOutline } from 'react-icons/ti';
+import { BiHeartCircle } from 'react-icons/bi';
 
 const Card = ({
     id,
@@ -18,10 +18,22 @@ const Card = ({
             <p className='Card-message'>{message}</p>
             <p className='Card-likes'>{likeCount}💞s</p>
             <div className='Card-buttons'>
-                <BiHeartCircle className="card-icons" size={20} onClick={() => updateLikes(id)}/>
-                <TiDeleteOutline className="card-icons" size={20} onClick={() => deleteCard(id)}/>
+                <BiHeartCircle
+                    className='card-icons'
+                    size={20}
+                    onClick={() => updateLikes(id)}
+                />
+                <TiDeleteOutline
+                    className='card-icons'
+                    size={20}
+                    onClick={() => deleteCard(id)}
+                />
             </div>
-            <UpdateCardForm updateCardCallback={updateCard} cardId={id} />
+            <UpdateCardForm
+                updateCardCallback={updateCard}
+                cardId={id}
+                existingMessage={message}
+            />
         </div>
     );
 };

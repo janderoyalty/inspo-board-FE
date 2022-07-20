@@ -155,7 +155,10 @@ const Board = ({ board, onDeleteCallback, updateBoardCallback }) => {
                         </div>
                     </section>
                 </div>
-                <UpdateBoardForm updateBoardCallback={updateBoardCallback} />
+                <UpdateBoardForm
+                    board={board}
+                    updateBoardCallback={updateBoardCallback}
+                />
                 <div>
                     <TiDeleteOutline
                         className='icons'
