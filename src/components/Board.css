@@ -19,20 +19,20 @@
   grid-row: 3;
   display: grid;
   grid-template-rows: 10% 90%;
-  overflow: scroll;
 }
 
 .cards {
   display: flex;
   grid-column: 2;
   flex-wrap: wrap;
-  /* overflow: scroll; */
+  /* : scroll; */
   height: 100vh;
 }
 
 .icons {
   size: 50px;
   color: #f9f9f9;
+  cursor: pointer;
 }
 
 .insetshadow {
@@ -57,4 +57,11 @@ h1{
 
 h2{
   font-size: 2.75vmax;
+}
+
+h3 {
+  text-transform: uppercase;
+}
+button{
+  cursor: pointer;
 }

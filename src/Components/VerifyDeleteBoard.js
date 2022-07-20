@@ -9,16 +9,16 @@ const VerifyDeleteBoard = ({ onDeleteCallback, onCancelCallback, id }) => {
       <p>Are you sure you want to delete this board?</p>
       <button
         className="verify-delete-board__button"
-        onClick={() => onDeleteCallback(id)}
+        onClick={() => {
+          onDeleteCallback(id);
+        }}
       >
-        {" "}
         Delete Board
       </button>
       <button
         className="verify-delete-board__button"
         onClick={() => onCancelCallback()}
       >
-        {" "}
         Cancel
       </button>
     </div>

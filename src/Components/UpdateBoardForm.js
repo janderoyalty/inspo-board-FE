@@ -52,7 +52,11 @@ const UpdateBoardForm = ({ updateBoardCallback }) => {
               value={formData.owner}
             />
             <div>
-              <button className="update-board-form_button" type="submit">
+              <button
+                className="update-board-form_button"
+                type="submit"
+                onClick={() => setHide(!hide)}
+              >
                 Update Board
               </button>
             </div>

@@ -13,7 +13,9 @@ const BoardList = ({ boards, selected, selectBoard, onAddBoardCallback }) => {
 
     const sortedBoards = boards.sort((a, b) => {
         let order = orderBy === 'asc' ? 1 : -1;
-        return a[sortBy] < b[sortBy] ? -1 * order : 1 * order;
+        let sortByA = sortBy === 'id' ? a[sortBy] : a[sortBy].toLowerCase();
+        let sortByB = sortBy === 'id' ? b[sortBy] : b[sortBy].toLowerCase();
+        return sortByA < sortByB ? -1 * order : 1 * order;
     });
 
     const displayBoard = () => {

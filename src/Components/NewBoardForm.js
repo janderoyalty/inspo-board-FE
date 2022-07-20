@@ -23,11 +23,13 @@ const NewBoardForm = ({ onAddBoardCallback }) => {
 
   return (
     <div>
-      <MdAddBox className="icons" size={30} onClick={() => setHide(!hide)}>{hide ? "Show" : "Hide"}</MdAddBox>
+      <MdAddBox className="icons" size={30} onClick={() => setHide(!hide)}>
+        {hide ? "Show" : "Hide"}
+      </MdAddBox>
       <div className={shown}>
         <form onSubmit={submitBoardData} className="new-board__form">
           <section>
-            <h2>Add New Board</h2>
+            <h3>Add New Board</h3>
             <div className="new-board__fields">
               <div>
                 <label htmlFor="title">Title</label>

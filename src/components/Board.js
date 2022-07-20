@@ -15,10 +15,12 @@ const Board = ({ board, onDeleteCallback, updateBoardCallback }) => {
     const [cardData, setCardData] = useState([]);
     const [sortBy, setSortBy] = useState('id');
     const [orderBy, setOrderBy] = useState('desc');
-    const [hide, setHide] = useState(true);
+    const [hideSort, setHideSort] = useState(true);
+    const [hideDelete, setHideDelete] = useState(true);
     const [deleteAttempt, setDeleteAttempt] = useState(false);
 
-    const shown = hide ? 'hidden' : 'shown';
+    const shownSort = hideSort ? 'hidden' : 'shown';
+    const shownDelete = hideDelete ? 'hidden' : 'shown';
 
     const getCards = () => {
         axios
@@ -135,10 +137,10 @@ const Board = ({ board, onDeleteCallback, updateBoardCallback }) => {
                     <BiSort
                         className='icons'
                         size={30}
-                        onClick={() => setHide(!hide)}>
-                        {hide ? 'Show' : 'Hide'}
+                        onClick={() => setHideSort(!hideSort)}>
+                        {hideSort ? 'Show' : 'Hide'}
                     </BiSort>
-                    <section className={shown}>
+                    <section className={shownSort}>
                         <div className='sort-menu--container'>
                             <SortMenu
                                 sortBy={sortBy}
@@ -154,20 +156,29 @@ const Board = ({ board, onDeleteCallback, updateBoardCallback }) => {
                     </section>
                 </div>
                 <UpdateBoardForm updateBoardCallback={updateBoardCallback} />
-                <TiDeleteOutline
-                    className='icons'
-                    size={30}
-                    onClick={() => setDeleteAttempt(true)}
-                />
-                {deleteAttempt && (
-                    <VerifyDeleteBoard
-                        onDeleteCallback={onDeleteCallback}
-                        onCancelCallback={() => {
-                            setDeleteAttempt(false);
-                        }}
-                        id={board.id}
-                    />
-                )}
+                <div>
+                    <TiDeleteOutline
+                        className='icons'
+                        size={30}
+                        onClick={() => {
+                            setDeleteAttempt(true);
+                            setHideDelete(!hideDelete);
+                        }}>
+                        {hideDelete ? 'Show' : 'Hide'}
+                    </TiDeleteOutline>
+                    <section className={shownDelete}>
+                        {deleteAttempt && (
+                            <VerifyDeleteBoard
+                                onDeleteCallback={onDeleteCallback}
+                                onCancelCallback={() => {
+                                    setDeleteAttempt(false);
+                                }}
+                                id={board.id}
+                            />
+                        )}
+                    </section>
+                </div>
+
                 <NewCardForm
                     boardId={board.id}
                     onAddCardCallback={addNewCard}
@@ -189,7 +200,6 @@ const Board = ({ board, onDeleteCallback, updateBoardCallback }) => {
                         );
                     })}
                 </div>
-                {/* <NewCardForm boardId={board.id} onAddCardCallback={addNewCard} /> */}
             </div>
         </div>
     );
