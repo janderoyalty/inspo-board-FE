@@ -5,9 +5,10 @@ import { AiOutlineForm } from 'react-icons/ai';
 import '../Styles/UpdateBoardForm.css';
 
 const UpdateBoardForm = ({ board, updateBoardCallback }) => {
-    const existingFormData = { title: board.title, owner: board.owner };
-
-    const [formData, setFormData] = useState(existingFormData);
+    const [formData, setFormData] = useState({
+        title: board.title,
+        owner: board.owner,
+    });
     const [hide, setHide] = useState(true);
 
     const updateFormData = (e) => {
