@@ -22,25 +22,7 @@ const Board = ({ board, onDeleteCallback, updateBoardCallback }) => {
     const shownSort = hideSort ? 'hidden' : 'shown';
     const shownDelete = hideDelete ? 'hidden' : 'shown';
 
-    // const getCards = () => {
-    //     axios
-    //         .get(`${URL}/boards/${board.id}/cards`)
-    //         .then((response) => {
-    //             const newData = response.data.map((card) => {
-    //                 return {
-    //                     id: card.card_id,
-    //                     message: card.message,
-    //                     likeCount: card.like_count,
-    //                 };
-    //             });
-    //             setCardData(newData);
-    //         })
-    //         .catch((err) => {
-    //             alert(err);
-    //         });
-    // };
-
-    useEffect(function getCards() {
+    const getCards = () => {
         axios
             .get(`${URL}/boards/${board.id}/cards`)
             .then((response) => {
@@ -56,8 +38,9 @@ const Board = ({ board, onDeleteCallback, updateBoardCallback }) => {
             .catch((err) => {
                 alert(err);
             });
-        getCards();
-    }, []);
+    };
+
+    useEffect(() => getCards(), [cardData]);
 
     const sortedCards = cardData.sort((a, b) => {
         let order = orderBy === 'asc' ? 1 : -1;
