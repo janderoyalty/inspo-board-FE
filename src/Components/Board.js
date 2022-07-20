@@ -24,7 +24,6 @@ import { TiDeleteOutline } from 'react-icons/ti';
 
 import VerifyDeleteBoard from './VerifyDeleteBoard';
 
-​
 
 const Board = ({ board, onDeleteCallback, updateBoardCallback }) => {
 
