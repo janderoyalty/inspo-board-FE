@@ -2,8 +2,8 @@ import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import { AiOutlineForm } from 'react-icons/ai';
 
-const UpdateCardForm = ({ updateCardCallback, cardId, existingMessage }) => {
-    const [message, setMessage] = useState(existingMessage);
+const UpdateCardForm = ({ updateCardCallback, cardId }) => {
+    const [message, setMessage] = useState('');
     const [hide, setHide] = useState(true);
 
     const updateFormData = (e) => {
@@ -14,6 +14,7 @@ const UpdateCardForm = ({ updateCardCallback, cardId, existingMessage }) => {
         e.preventDefault();
         updateCardCallback(cardId, message);
         setHide(true);
+        setMessage('');
     };
 
     const shown = hide ? 'hidden' : 'shown';
@@ -46,7 +47,6 @@ const UpdateCardForm = ({ updateCardCallback, cardId, existingMessage }) => {
 UpdateCardForm.propTypes = {
     updateCardCallback: PropTypes.func.isRequired,
     cardId: PropTypes.number.isRequired,
-    existingMessage: PropTypes.string,
 };
 
 export default UpdateCardForm;

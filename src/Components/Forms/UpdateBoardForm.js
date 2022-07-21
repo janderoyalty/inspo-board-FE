@@ -3,11 +3,12 @@ import PropTypes from 'prop-types';
 import { AiOutlineForm } from 'react-icons/ai';
 import '../Styles/UpdateBoardForm.css';
 
-const UpdateBoardForm = ({ board, updateBoardCallback }) => {
-    const [formData, setFormData] = useState({
-        title: board.title,
-        owner: board.owner,
-    });
+const UpdateBoardForm = ({ updateBoardCallback }) => {
+    const blankForm = {
+        title: '',
+        owner: '',
+    };
+    const [formData, setFormData] = useState(blankForm);
     const [hide, setHide] = useState(true);
 
     const updateFormData = (e) => {
@@ -21,6 +22,7 @@ const UpdateBoardForm = ({ board, updateBoardCallback }) => {
     const updateBoard = (e) => {
         e.preventDefault();
         updateBoardCallback(formData);
+        setFormData(blankForm);
     };
 
     const shown = hide ? 'hidden' : 'shown';
@@ -69,11 +71,6 @@ const UpdateBoardForm = ({ board, updateBoardCallback }) => {
 };
 
 UpdateBoardForm.propTypes = {
-    board: PropTypes.shape({
-        id: PropTypes.number.isRequired,
-        owner: PropTypes.string.isRequired,
-        title: PropTypes.string.isRequired,
-    }),
     updateBoardCallback: PropTypes.func.isRequired,
 };
 
