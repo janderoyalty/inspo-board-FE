@@ -8,7 +8,7 @@ import UpdateBoardForm from './Forms/UpdateBoardForm';
 import SortMenu from './SortMenu';
 import VerifyDeleteBoard from './VerifyDeleteBoard';
 import { URL } from '../App';
-import { BiSort } from 'react-icons/bi';
+import { BiSort, BiMenu } from 'react-icons/bi';
 import { TiDeleteOutline } from 'react-icons/ti';
 
 const Board = ({ board, onDeleteCallback, updateBoardCallback }) => {
@@ -16,9 +16,13 @@ const Board = ({ board, onDeleteCallback, updateBoardCallback }) => {
     const [sortBy, setSortBy] = useState('id');
     const [orderBy, setOrderBy] = useState('desc');
     const [hideSort, setHideSort] = useState(true);
+    const [hideHamburger, setHideHamburger] = useState(true);
     const [hideDelete, setHideDelete] = useState(true);
     const [deleteAttempt, setDeleteAttempt] = useState(false);
 
+    const shownHamburger = hideHamburger
+        ? 'hidden'
+        : 'hamburger-menu-container';
     const shownSort = hideSort ? 'hidden' : 'shown';
     const shownDelete = hideDelete ? 'hidden' : 'shown';
 
@@ -126,6 +130,8 @@ const Board = ({ board, onDeleteCallback, updateBoardCallback }) => {
         }
     };
 
+    // const hamburgerClass = `${shownHamburger} hamburger-menu-container`
+
     return (
         <div>
             <div className='board--title '>
@@ -134,12 +140,54 @@ const Board = ({ board, onDeleteCallback, updateBoardCallback }) => {
             </div>
             <div className='board--nav'>
                 <div>
+                    <BiMenu
+                        className='icons'
+                        size={30}
+                        onClick={() =>
+                            setHideHamburger(!hideHamburger)
+                        }></BiMenu>
+                    <section className={shownHamburger}>
+                        <div>
+                            <UpdateBoardForm
+                                board={board}
+                                updateBoardCallback={updateBoardCallback}
+                            />
+                        </div>
+                        <div>
+                            <TiDeleteOutline
+                                className='icons'
+                                size={30}
+                                onClick={() => {
+                                    setDeleteAttempt(true);
+                                    setHideDelete(!hideDelete);
+                                }}>
+                                {hideDelete ? 'Show' : 'Hide'}
+                            </TiDeleteOutline>
+                            <section className={shownDelete}>
+                                {deleteAttempt && (
+                                    <VerifyDeleteBoard
+                                        onDeleteCallback={onDeleteCallback}
+                                        onCancelCallback={() => {
+                                            setDeleteAttempt(false);
+                                        }}
+                                        id={board.id}
+                                    />
+                                )}
+                            </section>
+                        </div>
+                        <div>
+                            <NewCardForm
+                                boardId={board.id}
+                                onAddCardCallback={addNewCard}
+                            />
+                        </div>
+                    </section>
+                </div>
+                <div>
                     <BiSort
                         className='icons'
                         size={30}
-                        onClick={() => setHideSort(!hideSort)}>
-                        {hideSort ? 'Show' : 'Hide'}
-                    </BiSort>
+                        onClick={() => setHideSort(!hideSort)}></BiSort>
                     <section className={shownSort}>
                         <div className='sort-menu--container'>
                             <SortMenu
@@ -155,34 +203,6 @@ const Board = ({ board, onDeleteCallback, updateBoardCallback }) => {
                         </div>
                     </section>
                 </div>
-                <UpdateBoardForm updateBoardCallback={updateBoardCallback} />
-                <div>
-                    <TiDeleteOutline
-                        className='icons'
-                        size={30}
-                        onClick={() => {
-                            setDeleteAttempt(true);
-                            setHideDelete(!hideDelete);
-                        }}>
-                        {hideDelete ? 'Show' : 'Hide'}
-                    </TiDeleteOutline>
-                    <section className={shownDelete}>
-                        {deleteAttempt && (
-                            <VerifyDeleteBoard
-                                onDeleteCallback={onDeleteCallback}
-                                onCancelCallback={() => {
-                                    setDeleteAttempt(false);
-                                }}
-                                id={board.id}
-                            />
-                        )}
-                    </section>
-                </div>
-
-                <NewCardForm
-                    boardId={board.id}
-                    onAddCardCallback={addNewCard}
-                />
             </div>
 
             <div className='board--cards'>
