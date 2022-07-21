@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import SortBoardMenu from './SortBoardMenu';
 import { BiSort } from 'react-icons/bi';
 import NewBoardForm from './Forms/NewBoardForm';
+import './Styles/SortBoardMenu.css';
 
 const BoardList = ({ boards, selected, selectBoard, onAddBoardCallback }) => {
     const [sortBy, setSortBy] = useState('id');
@@ -38,14 +39,13 @@ const BoardList = ({ boards, selected, selectBoard, onAddBoardCallback }) => {
     return (
         <section>
             <div>
-                <div>
+                <h1 id='page-title'>ma5en's Inspo Board</h1>
+                <div className='board-list--icons'>
                     <NewBoardForm onAddBoardCallback={onAddBoardCallback} />
                     <BiSort
                         className='icons'
                         size={30}
-                        onClick={() => setHide(!hide)}>
-                        {hide ? 'Show' : 'Hide'}
-                    </BiSort>
+                        onClick={() => setHide(!hide)}></BiSort>
                 </div>
                 <section className={shown}>
                     <div className='sort-menu--container'>

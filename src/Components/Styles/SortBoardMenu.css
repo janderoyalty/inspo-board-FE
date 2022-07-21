@@ -38,6 +38,12 @@
   color: #80EFD3;
 }
 
+#page-title {
+  font-size: 3.5rem;
+  margin: 1rem;
+  padding: 0;
+}
+
 #board-menu--check-mark {
   vertical-align: text-bottom;
 }
