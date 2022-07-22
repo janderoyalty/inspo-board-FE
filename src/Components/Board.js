@@ -19,10 +19,12 @@ const Board = ({ board, onDeleteCallback, updateBoardCallback }) => {
   const [orderBy, setOrderBy] = useState("desc");
   const [hideSort, setHideSort] = useState(true);
   const [hideBoardMenu, setHideBoardMenu] = useState(true);
+  const [hideCardMenu, setHideCardMenu] = useState(true);
   const [hideDelete, setHideDelete] = useState(true);
   const [deleteAttempt, setDeleteAttempt] = useState(false);
 
   const shownBoardMenu = hideBoardMenu ? "hidden" : "board-menu-container";
+  const shownCardMenu = hideCardMenu ? "hidden" : "card-menu-container";
   const shownSort = hideSort ? "hidden" : "shown";
   const shownDelete = hideDelete ? "hidden" : "shown";
 
@@ -177,9 +179,9 @@ const Board = ({ board, onDeleteCallback, updateBoardCallback }) => {
           <BsStickiesFill
             className="icons"
             size={25}
-            onClick={() => setHideBoardMenu(!hideBoardMenu)}
+            onClick={() => setHideCardMenu(!hideCardMenu)}
           />
-          <section className={shownBoardMenu}>
+          <section className={shownCardMenu}>
             <div>
               <NewCardForm boardId={board.id} onAddCardCallback={addNewCard} />
             </div>
