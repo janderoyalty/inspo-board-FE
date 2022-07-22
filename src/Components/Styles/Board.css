@@ -1,6 +1,5 @@
 .board {
   display: grid;
-  /* grid-template-columns: 15% 85%; */
   grid-template-rows: 20vh 30vh 50vh;
 }
 
@@ -11,7 +10,7 @@
 .board--nav {
   display: flex;
   grid-row: 2;
-  justify-content: center;
+  justify-content: space-evenly;
 }
 
 .board--cards {
@@ -33,7 +32,6 @@
 }
 
 .insetshadow {
-  /* font-family: "Avant Garde", Avantgarde, "Century Gothic", CenturyGothic, "AppleGothic", sans-serif; */
   font-family: "Doris", sans-serif;
   margin: 2%;
   text-align: center;
@@ -63,7 +61,13 @@ button {
   cursor: pointer;
 }
 
-.hamburger-menu-container{
+.board-menu-container{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+}
+
+.card-menu-container{
   display: flex;
   flex-direction: row;
   justify-content: space-evenly;

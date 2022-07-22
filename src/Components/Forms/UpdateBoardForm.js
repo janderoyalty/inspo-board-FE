@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
-import { AiOutlineForm } from 'react-icons/ai';
+import { AiFillEdit } from 'react-icons/ai';
 import '../Styles/UpdateBoardForm.css';
 
 const UpdateBoardForm = ({ updateBoardCallback }) => {
@@ -29,12 +29,10 @@ const UpdateBoardForm = ({ updateBoardCallback }) => {
 
     return (
         <div>
-            <AiOutlineForm
+            <AiFillEdit
                 className='icons'
                 size={30}
-                onClick={() => setHide(!hide)}>
-                {hide ? 'Show' : 'Hide'}
-            </AiOutlineForm>
+                onClick={() => setHide(!hide)}/>
             <div className={shown}>
                 <div className='update-board'>
                     <h3>Update Board</h3>
