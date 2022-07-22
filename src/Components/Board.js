@@ -157,9 +157,7 @@ const Board = ({ board, onDeleteCallback, updateBoardCallback }) => {
                   setDeleteAttempt(true);
                   setHideDelete(!hideDelete);
                 }}
-              >
-                {hideDelete ? "Show" : "Hide"}
-              </TiDelete>
+              />
               <section className={shownDelete}>
                 {deleteAttempt && (
                   <VerifyDeleteBoard
@@ -190,7 +188,7 @@ const Board = ({ board, onDeleteCallback, updateBoardCallback }) => {
             className="icons"
             size={30}
             onClick={() => setHideSort(!hideSort)}
-          ></BiSort>
+          />
           <section className={shownSort}>
             <div className="sort-menu--container">
               <SortMenu
