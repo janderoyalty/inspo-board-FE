@@ -130,7 +130,6 @@ const Board = ({ board, onDeleteCallback, updateBoardCallback }) => {
         }
     };
 
-    // const hamburgerClass = `${shownHamburger} hamburger-menu-container`
 
     return (
         <div>

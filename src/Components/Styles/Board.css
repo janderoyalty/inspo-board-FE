@@ -9,10 +9,9 @@
 }
 
 .board--nav {
-  grid-row: 2;
   display: flex;
-  justify-content: space-between;
-  margin: 1rem;
+  grid-row: 2;
+  justify-content: center;
 }
 
 .board--cards {
@@ -67,4 +66,5 @@ button {
 .hamburger-menu-container{
   display: flex;
   flex-direction: row;
+  justify-content: space-evenly;
 }
