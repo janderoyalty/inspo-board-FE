@@ -40,10 +40,10 @@ const App = () => {
 
 	const updateBoard = (newBoardInfo) => {
 		if (!newBoardInfo["title"]) {
-			return alert("New board must have a title!");
+			return alert("Board must have a title!");
 		}
 		if (!newBoardInfo["owner"]) {
-			return alert("New board must have an owner!");
+			return alert("Board must have an owner!");
 		}
 		axios
 			.put(`${URL}/boards/${selected.id}`, newBoardInfo)
