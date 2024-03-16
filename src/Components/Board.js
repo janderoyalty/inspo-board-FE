@@ -50,7 +50,7 @@ const Board = ({ board, onDeleteCallback, updateBoardCallback }) => {
 			});
 	};
 
-	useEffect(() => getCards(), []);
+	useEffect(() => getCards(), [board]);
 
 	const sortedCards = cardData.sort((a, b) => {
 		let order = orderBy === "asc" ? 1 : -1;
