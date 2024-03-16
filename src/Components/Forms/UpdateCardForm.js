@@ -2,8 +2,8 @@ import React, { useState } from "react";
 import PropTypes from "prop-types";
 import { AiOutlineForm } from "react-icons/ai";
 
-const UpdateCardForm = ({ updateCardCallback, cardId }) => {
-	const [message, setMessage] = useState("");
+const UpdateCardForm = ({ updateCardCallback, cardId, oldMessage }) => {
+	const [message, setMessage] = useState(oldMessage);
 	const [hide, setHide] = useState(true);
 
 	const updateFormData = (e) => {
@@ -33,6 +33,7 @@ const UpdateCardForm = ({ updateCardCallback, cardId }) => {
 				<form onSubmit={updateCard}>
 					<label htmlFor="message">Message</label>
 					<input
+						maxlength="40"
 						onChange={updateFormData}
 						name="title"
 						id="title"

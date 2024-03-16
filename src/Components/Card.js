@@ -31,8 +31,11 @@ const Card = ({
 					onClick={() => deleteCard(id)}
 				/>
 			</div>
-			{/* {console.log("Card ID:", { id })} */}
-			<UpdateCardForm updateCardCallback={updateCard} cardId={id} />
+			<UpdateCardForm
+				updateCardCallback={updateCard}
+				cardId={id}
+				oldMessage={message}
+			/>
 		</div>
 	);
 };
