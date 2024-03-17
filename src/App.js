@@ -4,7 +4,8 @@ import "./App.css";
 import Board from "./Components/Board";
 import BoardList from "./Components/BoardList";
 
-export const URL = "http://127.0.0.1:5000";
+// export const URL = "http://127.0.0.1:5000";
+export const URL = "https://inspo-board-be.onrender.com";
 
 const App = () => {
 	const [boardData, setBoardData] = useState([]);

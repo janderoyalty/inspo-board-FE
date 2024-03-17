@@ -32,6 +32,8 @@ const Board = ({ board, onDeleteCallback, updateBoardCallback }) => {
 	const shownSort = hideSort ? "hidden" : "shown";
 	const shownDelete = hideDelete ? "hidden" : "shown";
 
+	const [formData, setFormData] = useState(board);
+
 	const getCards = () => {
 		axios
 			.get(`${URL}/boards/${board.id}/cards`)
@@ -158,6 +160,8 @@ const Board = ({ board, onDeleteCallback, updateBoardCallback }) => {
 							<UpdateBoardForm
 								board={board}
 								updateBoardCallback={updateBoardCallback}
+								formData={formData}
+								setFormData={setFormData}
 							/>
 						</div>
 						<div>
@@ -196,7 +200,7 @@ const Board = ({ board, onDeleteCallback, updateBoardCallback }) => {
 					</div>
 					<section className={shownCardMenu}>
 						<div>
-							<NewCardForm boardId={board.id} onAddCardCallback={addNewCard} />
+							<NewCardForm board={board} onAddCardCallback={addNewCard} />
 						</div>
 						<div>
 							<BiSort

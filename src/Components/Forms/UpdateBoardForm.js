@@ -3,8 +3,12 @@ import PropTypes from "prop-types";
 import { AiFillEdit } from "react-icons/ai";
 import "../Styles/UpdateBoardForm.css";
 
-const UpdateBoardForm = ({ updateBoardCallback, board }) => {
-	const [formData, setFormData] = useState(board);
+const UpdateBoardForm = ({
+	updateBoardCallback,
+	board,
+	formData,
+	setFormData,
+}) => {
 	const [hide, setHide] = useState(true);
 
 	const updateFormData = (e) => {
@@ -68,6 +72,13 @@ const UpdateBoardForm = ({ updateBoardCallback, board }) => {
 
 UpdateBoardForm.propTypes = {
 	updateBoardCallback: PropTypes.func.isRequired,
+	board: PropTypes.shape({
+		id: PropTypes.number.isRequired,
+		owner: PropTypes.string.isRequired,
+		title: PropTypes.string.isRequired,
+	}),
+	formData: PropTypes.string.isRequired,
+	setFormData: PropTypes.func.isRequired,
 };
 
 export default UpdateBoardForm;

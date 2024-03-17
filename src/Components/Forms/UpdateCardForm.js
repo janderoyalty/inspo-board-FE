@@ -50,6 +50,7 @@ const UpdateCardForm = ({ updateCardCallback, cardId, oldMessage }) => {
 UpdateCardForm.propTypes = {
 	updateCardCallback: PropTypes.func.isRequired,
 	cardId: PropTypes.number.isRequired,
+	oldMessage: PropTypes.string.isRequired,
 };
 
 export default UpdateCardForm;
