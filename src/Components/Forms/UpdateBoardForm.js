@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import PropTypes from "prop-types";
 import { AiFillEdit } from "react-icons/ai";
 import "../Styles/UpdateBoardForm.css";
@@ -18,10 +18,14 @@ const UpdateBoardForm = ({ updateBoardCallback, board }) => {
 	const updateBoard = (e) => {
 		e.preventDefault();
 		updateBoardCallback(formData);
-		setFormData(board);
+		setHide(true);
 	};
 
 	const shown = hide ? "hidden" : "shown";
+
+	useEffect(() => {
+		setFormData(board);
+	}, [board]);
 
 	return (
 		<div>
@@ -50,7 +54,7 @@ const UpdateBoardForm = ({ updateBoardCallback, board }) => {
 							<button
 								className="update-board-form_button"
 								type="submit"
-								onClick={() => setHide(!hide)}
+								onClick={() => setHide(true)}
 							>
 								Update Board
 							</button>
