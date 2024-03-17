@@ -71,7 +71,10 @@ const App = () => {
 				title: title,
 				owner: owner,
 			})
-			.then((response) => {})
+			.then((response) => {
+				// Update board list after adding the new board
+				getBoards();
+			})
 			.catch((error) => {
 				console.log(error);
 			});
